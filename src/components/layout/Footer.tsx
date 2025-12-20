@@ -38,17 +38,17 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg mb-4 text-primary">Contact</h4>
             <div className="space-y-3">
-              <a href="tel:+1234567890" className="flex items-center gap-3 text-cream/70 hover:text-primary transition-colors text-sm">
+              <a href="tel:+14352377373" className="flex items-center gap-3 text-cream/70 hover:text-primary transition-colors text-sm">
                 <Phone className="w-4 h-4" />
-                (123) 456-7890
+                (435) 237-7373
               </a>
-              <a href="mailto:michael@mcdesign.bio" className="flex items-center gap-3 text-cream/70 hover:text-primary transition-colors text-sm">
+              <a href="mailto:Mike.rcccon@yahoo.com" className="flex items-center gap-3 text-cream/70 hover:text-primary transition-colors text-sm">
                 <Mail className="w-4 h-4" />
-                michael@mcdesign.bio
+                Mike.rcccon@yahoo.com
               </a>
               <div className="flex items-start gap-3 text-cream/70 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5" />
-                <span>123 Builder Lane<br />City, State 12345</span>
+                <span>8215 Winding Hill Ln<br />Spring, TX 77379</span>
               </div>
             </div>
           </div>
