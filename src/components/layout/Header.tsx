@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import mcLogo from "@/assets/mc-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,14 +36,12 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-12 h-12 bg-primary rounded-sm flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="text-primary-foreground font-serif text-xl font-bold">MC</span>
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-cream text-lg font-serif tracking-wide">Michael Chandler</span>
-            <p className="text-cream/60 text-xs tracking-[0.3em] uppercase">Design • Build • Develop</p>
-          </div>
+        <Link to="/" className="flex items-center group">
+          <img 
+            src={mcLogo} 
+            alt="Michael Chandler Logo" 
+            className="h-14 w-auto group-hover:scale-105 transition-transform"
+          />
         </Link>
 
         {/* Desktop Navigation */}

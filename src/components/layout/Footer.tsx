@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import mcLogo from "@/assets/mc-logo.png";
 
 const Footer = () => {
   return (
@@ -8,15 +9,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-sm flex items-center justify-center">
-                <span className="text-primary-foreground font-serif text-xl font-bold">MC</span>
-              </div>
-              <div>
-                <span className="text-lg font-serif tracking-wide">Michael Chandler</span>
-                <p className="text-cream/60 text-xs tracking-[0.2em] uppercase">Design • Build • Develop</p>
-              </div>
-            </div>
+            <Link to="/" className="block">
+              <img 
+                src={mcLogo} 
+                alt="Michael Chandler Logo" 
+                className="h-16 w-auto"
+              />
+            </Link>
             <p className="text-cream/70 text-sm leading-relaxed">
               With over 37 years of experience, I bring unparalleled craftsmanship and attention to detail to every project.
             </p>
