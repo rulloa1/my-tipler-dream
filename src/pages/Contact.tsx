@@ -40,15 +40,24 @@ const Contact = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center"><Phone className="w-5 h-5 text-primary" /></div>
-                  <div><p className="text-sm text-muted-foreground">Phone</p><a href="tel:+14352377373" className="text-charcoal hover:text-primary">(435) 237-7373</a></div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Phone (Preferred)</p>
+                    <a href="tel:+14352377373" className="text-foreground hover:text-primary font-medium">(435) 237-7373</a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center"><Mail className="w-5 h-5 text-primary" /></div>
-                  <div><p className="text-sm text-muted-foreground">Email</p><a href="mailto:Mike.rcccon@yahoo.com" className="text-charcoal hover:text-primary">Mike.rcccon@yahoo.com</a></div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Email</p>
+                    <a href="mailto:Mike.rcccon@yahoo.com" className="text-foreground hover:text-primary font-medium">Mike.rcccon@yahoo.com</a>
+                  </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center"><MapPin className="w-5 h-5 text-primary" /></div>
-                  <div><p className="text-sm text-muted-foreground">Address</p><p className="text-charcoal">8215 Winding Hill Ln, Spring, TX 77379</p></div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Address</p>
+                    <p className="text-foreground font-medium">8215 Winding Hill Ln, Spring, TX 77379</p>
+                  </div>
                 </div>
               </div>
             </div>
