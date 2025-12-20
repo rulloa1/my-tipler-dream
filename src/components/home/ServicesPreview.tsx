@@ -47,11 +47,11 @@ const ServicesPreview = () => {
           "text-center mb-16 transition-all duration-700",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         )}>
-          <p className="text-primary tracking-[0.3em] uppercase text-sm mb-4">What We Do</p>
-          <h2 className="text-4xl md:text-5xl font-serif mb-6">Our Services</h2>
+          <p className="text-primary tracking-[0.3em] uppercase text-sm mb-4">What I Do</p>
+          <h2 className="text-4xl md:text-5xl font-serif mb-6">My Services</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6" />
           <p className="text-cream/70 max-w-2xl mx-auto">
-            From concept to completion, we offer comprehensive services to bring your vision to life.
+            From concept to completion, I offer comprehensive services to bring your vision to life.
           </p>
         </div>
 

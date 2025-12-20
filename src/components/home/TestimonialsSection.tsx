@@ -6,21 +6,21 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     id: 1,
-    quote: "Michael transformed our vision into a stunning reality. His attention to detail and commitment to excellence exceeded all our expectations. Our home is truly a masterpiece.",
+    quote: "Michael transformed my vision into a stunning reality. His attention to detail and commitment to excellence exceeded all my expectations. My home is truly a masterpiece.",
     author: "Robert & Sarah Thompson",
     location: "Coastal Modern Estate",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80",
   },
   {
     id: 2,
-    quote: "Working with Michael was an absolute pleasure. He listened to our needs, offered brilliant solutions, and delivered on time and within budget. Highly recommend!",
+    quote: "Working with Michael was an absolute pleasure. He listened to my needs, offered brilliant solutions, and delivered on time and within budget. Highly recommend!",
     author: "Jennifer Martinez",
     location: "Urban Loft Renovation",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80",
   },
   {
     id: 3,
-    quote: "The craftsmanship and quality of work is unmatched. Michael brought our mountain retreat dream to life with incredible skill and professionalism.",
+    quote: "The craftsmanship and quality of work is unmatched. Michael brought my mountain retreat dream to life with incredible skill and professionalism.",
     author: "David & Linda Chen",
     location: "Mountain Retreat",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
