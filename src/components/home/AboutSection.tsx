@@ -46,15 +46,15 @@ const AboutSection = () => {
             <div className="space-y-4">
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80"
-                  alt="Luxury interior"
+                  src="https://mcdesign.bio/assets/miami-beach-cover-BhM84cOz.webp"
+                  alt="S. Florida High Rise Luxe Condo"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="aspect-square overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80"
-                  alt="Custom kitchen"
+                  src="https://mcdesign.bio/assets/alpine-ranch-cover-BjXjWziU.webp"
+                  alt="High Alpine Ranch Montana"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -62,15 +62,15 @@ const AboutSection = () => {
             <div className="space-y-4 pt-8">
               <div className="aspect-square overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=80"
-                  alt="Modern living"
+                  src="https://mcdesign.bio/assets/southcoast-cover-BXExeqou.webp"
+                  alt="South Coast Renovation Big Sur"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80"
-                  alt="Exterior design"
+                  src="https://mcdesign.bio/assets/pool-design-1-C5ZyjJVV.webp"
+                  alt="Ultra Luxe Private Club Pool"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
