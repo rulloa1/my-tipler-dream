@@ -1,6 +1,9 @@
 // Base URL for project images from GitHub
 const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects";
 
+// Import local assets
+import woodPanelingDetail from "@/assets/detail-wood-paneling.png";
+
 export interface Project {
   id: string;
   title: string;
@@ -81,7 +84,7 @@ export const projects: Project[] = [
       `${GITHUB_RAW_BASE}/miami-beach-44.webp`,
       `${GITHUB_RAW_BASE}/miami-beach-45.webp`,
       `${GITHUB_RAW_BASE}/miami-beach-46.webp`,
-      `${GITHUB_RAW_BASE}/miami-beach-47.webp`,
+      woodPanelingDetail,
     ],
   },
   // 2. High Alpine Ranch
