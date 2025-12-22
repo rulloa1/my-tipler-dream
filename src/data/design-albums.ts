@@ -55,5 +55,58 @@ export const designAlbums: DesignAlbum[] = [
             "/design/southcoast-kitchen/47 AFTER.JPG"
         ]
     },
+    {
+        id: "lighting",
+        title: "Specialty & Mood Lighting",
+        description: "Custom lighting solutions that set the mood and highlight architectural details.",
+        coverImage: "/design/lighting/IMG_5563.jpg",
+        images: [
+            "/design/lighting/IMG_5563.jpg",
+            "/design/lighting/IMG_8242.jpg",
+            "/design/lighting/IMG_5564.jpg",
+            "/design/lighting/IMG_5565.jpg",
+            "/design/lighting/IMG_5553.jpg",
+            "/design/lighting/IMG_5566.jpg",
+            "/design/lighting/IMG_5575.jpg",
+            "/design/lighting/IMG_5574.jpg",
+            "/design/lighting/IMG_5573.jpg",
+            "/design/lighting/IMG_5571.jpg",
+            "/design/lighting/IMG_5570.jpg",
+            "/design/lighting/IMG_5569.jpg",
+            "/design/lighting/IMG_5551.jpg",
+            "/design/lighting/IMG_5552.jpg",
+            "/design/lighting/IMG_8238.jpg",
+            "/design/lighting/IMG_8243.jpg",
+            "/design/lighting/IMG_4621.PNG",
+            "/design/lighting/IMG_3154.PNG",
+            "/design/lighting/168093.jpeg",
+            "/design/lighting/168095.jpeg",
+            "/design/lighting/168096.jpeg"
+        ]
+    },
+    {
+        id: "finishes",
+        title: "Specialty Finishes & Textures",
+        description: "Exquisite surface treatments, custom plasters, and unique tactile elements.",
+        coverImage: "/design/finishes/IMG_6629.jpg",
+        images: [
+            "/design/finishes/IMG_6629.jpg",
+            "/design/finishes/IMG_2751.jpg",
+            "/design/finishes/IMG_3317.jpg",
+            "/design/finishes/IMG_3318.jpg",
+            "/design/finishes/IMG_3319.jpg",
+            "/design/finishes/IMG_3320.jpg",
+            "/design/finishes/IMG_6794.jpg",
+            "/design/finishes/IMG_6680.jpg",
+            "/design/finishes/IMG_5112.jpg",
+            "/design/finishes/IMG_5101.jpg",
+            "/design/finishes/IMG_5117.jpg",
+            "/design/finishes/IMG_4883.jpg",
+            "/design/finishes/IMG_4332.jpg",
+            "/design/finishes/IMG_3727.jpg",
+            "/design/finishes/IMG_4429.jpg",
+            "/design/finishes/IMG_4430.jpg"
+        ]
+    },
     // Future albums can be added here
 ];
