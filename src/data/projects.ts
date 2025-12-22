@@ -205,7 +205,7 @@ export const projects: Project[] = [
     gallery: [
       `${GITHUB_RAW_BASE}/montana-cover.webp`,
       `${GITHUB_RAW_BASE}/montana-1.webp`,
-      `${GITHUB_RAW_BASE}/montana-2.webp`,
+      "/projects/montana/montana-detail.jpg",
       `${GITHUB_RAW_BASE}/montana-3.webp`,
       `${GITHUB_RAW_BASE}/montana-4.webp`,
       `${GITHUB_RAW_BASE}/montana-5.webp`,
