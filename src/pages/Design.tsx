@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { designAlbums } from "@/data/design-albums";
 
 import timberBeamsImg from "@/assets/detail-timber-beams.jpg";
 import spaVanityImg from "@/assets/detail-spa-vanity.jpg";
@@ -63,9 +64,8 @@ const Design = () => {
       <section className="pt-32 pb-16 bg-cream">
         <div
           ref={heroAnimation.ref}
-          className={`container mx-auto px-6 transition-all duration-700 ${
-            heroAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`container mx-auto px-6 transition-all duration-700 ${heroAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <Link
             to="/"
@@ -88,9 +88,8 @@ const Design = () => {
             {/* Left: Large Architecture Image */}
             <div
               ref={interiorsAnimation.ref}
-              className={`relative transition-all duration-700 ${
-                interiorsAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-              }`}
+              className={`relative transition-all duration-700 ${interiorsAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                }`}
             >
               <div className="relative">
                 {/* Corner bracket decoration */}
@@ -109,9 +108,8 @@ const Design = () => {
 
             {/* Right: Interiors Stack */}
             <div
-              className={`transition-all duration-700 delay-150 ${
-                interiorsAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-              }`}
+              className={`transition-all duration-700 delay-150 ${interiorsAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                }`}
             >
               <h3 className="text-xl font-serif text-charcoal mb-6 tracking-wider">INTERIORS</h3>
               <div className="space-y-6">
@@ -155,9 +153,8 @@ const Design = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div
               ref={exteriorAnimation.ref}
-              className={`group relative overflow-hidden transition-all duration-700 ${
-                exteriorAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-              }`}
+              className={`group relative overflow-hidden transition-all duration-700 ${exteriorAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+                }`}
             >
               <img
                 src={limestoneFireplaceImg}
@@ -166,9 +163,8 @@ const Design = () => {
               />
             </div>
             <div
-              className={`transition-all duration-700 delay-150 ${
-                exteriorAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-              }`}
+              className={`transition-all duration-700 delay-150 ${exteriorAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                }`}
             >
               <h2 className="text-2xl font-serif text-charcoal mb-4 tracking-wider">
                 EXTERIOR SPACES & LANDSCAPE
@@ -187,9 +183,8 @@ const Design = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div
               ref={furnitureAnimation.ref}
-              className={`transition-all duration-700 ${
-                furnitureAnimation.isVisible ? "opacity-100 -translate-x-0" : "opacity-0 -translate-x-12"
-              }`}
+              className={`transition-all duration-700 ${furnitureAnimation.isVisible ? "opacity-100 -translate-x-0" : "opacity-0 -translate-x-12"
+                }`}
             >
               <h2 className="text-2xl font-serif text-charcoal mb-4 tracking-wider">
                 CUSTOM FURNITURE
@@ -199,9 +194,8 @@ const Design = () => {
               </p>
             </div>
             <div
-              className={`group relative overflow-hidden transition-all duration-700 delay-150 ${
-                furnitureAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
-              }`}
+              className={`group relative overflow-hidden transition-all duration-700 delay-150 ${furnitureAnimation.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+                }`}
             >
               <img
                 src={leatherCabinetryImg}
@@ -218,9 +212,8 @@ const Design = () => {
         <div className="container mx-auto px-6">
           <div
             ref={developmentAnimation.ref}
-            className={`text-center mb-16 transition-all duration-700 ${
-              developmentAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-center mb-16 transition-all duration-700 ${developmentAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <h2 className="text-3xl font-serif text-charcoal mb-4 tracking-wider">
               DEVELOPMENT & CONCEPTS
@@ -232,9 +225,8 @@ const Design = () => {
             {developmentConcepts.map((concept, index) => (
               <div
                 key={index}
-                className={`bg-card p-8 border border-border hover:border-primary/30 hover:-translate-y-2 hover:shadow-xl transition-all duration-500 text-center ${
-                  developmentAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`bg-card p-8 border border-border hover:border-primary/30 hover:-translate-y-2 hover:shadow-xl transition-all duration-500 text-center ${developmentAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
                 style={{
                   transitionDelay: `${(index + 1) * 100}ms`,
                 }}
@@ -256,14 +248,47 @@ const Design = () => {
         </div>
       </section>
 
+      {/* Design Portfolio Albums (New) */}
+      <section className="py-20 bg-background border-t border-border/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-serif text-charcoal mb-4 tracking-wider">
+              CURATED COLLECTIONS
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Explore our specific design focuses
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {designAlbums.map((album) => (
+              <div key={album.id} className="group cursor-pointer">
+                <div className="overflow-hidden rounded-lg mb-4 aspect-[4/3] relative">
+                  <img
+                    src={album.coverImage}
+                    alt={album.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <h3 className="text-2xl font-serif text-charcoal mb-2 group-hover:text-primary transition-colors">{album.title}</h3>
+                <p className="text-muted-foreground mb-4">{album.description}</p>
+                <Link to={`/design/${album.id}`}>
+                  <Button variant="outline">View Collection</Button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bespoke Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div
             ref={bespokeAnimation.ref}
-            className={`text-center transition-all duration-700 ${
-              bespokeAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-center transition-all duration-700 ${bespokeAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <h2 className="text-3xl font-serif text-charcoal mb-4 tracking-wider">
               CUSTOM FURNITURE
@@ -286,9 +311,8 @@ const Design = () => {
         <div className="container mx-auto px-6">
           <div
             ref={ctaAnimation.ref}
-            className={`text-center transition-all duration-700 ${
-              ctaAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`text-center transition-all duration-700 ${ctaAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <h2 className="text-3xl md:text-4xl font-serif text-white mb-8">
               Ready to Discuss Your Vision?
