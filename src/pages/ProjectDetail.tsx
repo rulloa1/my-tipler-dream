@@ -9,9 +9,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useGalleryOrder } from "@/hooks/useGalleryOrder";
 
 import { AIRedesignDialog } from "@/components/gallery/AIRedesignDialog";
-
 const ProjectDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const {
+    id
+  } = useParams<{
+    id: string;
+  }>();
   // Force a re-render/reset when ID changes
   const [key, setKey] = useState(0);
   const navigate = useNavigate();
@@ -24,10 +27,12 @@ const ProjectDetail = () => {
 
   // Memoize default gallery to prevent infinite loops
   const defaultGallery = useMemo(() => project?.gallery || [], [project?.gallery]);
-  const { images: galleryImages, isLoading, isAdmin, saveGalleryOrder } = useGalleryOrder(
-    id || "",
-    defaultGallery
-  );
+  const {
+    images: galleryImages,
+    isLoading,
+    isAdmin,
+    saveGalleryOrder
+  } = useGalleryOrder(id || "", defaultGallery);
 
   // Scroll to top when project changes
   useEffect(() => {
@@ -47,8 +52,7 @@ const ProjectDetail = () => {
   };
 
   if (!project) {
-    return (
-      <Layout>
+    return <Layout>
         <div className="pt-32 pb-24 bg-cream min-h-screen">
           <div className="container mx-auto px-6 text-center">
             <h1 className="text-4xl font-serif text-charcoal mb-4">Project Not Found</h1>
@@ -57,14 +61,11 @@ const ProjectDetail = () => {
             </Link>
           </div>
         </div>
-      </Layout>
-    );
+      </Layout>;
   }
-
-  const currentIndex = projects.findIndex((p) => p.id === project.id);
+  const currentIndex = projects.findIndex(p => p.id === project.id);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
-
   const openLightbox = (index: number) => setSelectedImage(index);
   const closeLightbox = () => setSelectedImage(null);
   const nextImage = () => {
@@ -77,40 +78,43 @@ const ProjectDetail = () => {
       setSelectedImage(selectedImage - 1);
     }
   };
-
-  return (
-    <Layout>
-      <motion.div
-        key={project.id} // Ensure animations trigger on route change
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+  return <Layout>
+      <motion.div key={project.id} // Ensure animations trigger on route change
+    initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} exit={{
+      opacity: 0
+    }} transition={{
+      duration: 0.5
+    }}>
         {/* Hero */}
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
-          <motion.img
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            src={project.coverImage}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
+          <motion.img initial={{
+          scale: 1.1
+        }} animate={{
+          scale: 1
+        }} transition={{
+          duration: 1.5,
+          ease: "easeOut"
+        }} src={project.coverImage} alt={project.title} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
             <div className="container mx-auto">
-              <Link
-                to="/portfolio"
-                className="inline-flex items-center gap-2 text-cream/70 hover:text-primary transition-colors mb-6"
-              >
+              <Link to="/portfolio" className="inline-flex items-center gap-2 text-cream/70 hover:text-primary transition-colors mb-6">
                 <ArrowLeft className="w-4 h-4" /> Back to Portfolio
               </Link>
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
+              <motion.div initial={{
+              y: 20,
+              opacity: 0
+            }} animate={{
+              y: 0,
+              opacity: 1
+            }} transition={{
+              delay: 0.2,
+              duration: 0.6
+            }}>
                 <p className="text-primary tracking-[0.3em] uppercase text-sm mb-2">{project.category}</p>
                 <h1 className="text-4xl md:text-6xl font-serif text-cream mb-2">{project.title}</h1>
                 <p className="text-cream/80 text-xl">{project.subtitle}</p>
@@ -125,71 +129,71 @@ const ProjectDetail = () => {
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-3 gap-12">
               {/* Main Content */}
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="lg:col-span-2"
-              >
+              <motion.div initial={{
+              y: 30,
+              opacity: 0
+            }} whileInView={{
+              y: 0,
+              opacity: 1
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.3,
+              duration: 0.6
+            }} className="lg:col-span-2">
                 <h2 className="text-3xl font-serif text-charcoal mb-6">Project Overview</h2>
                 <p className="text-muted-foreground leading-relaxed text-lg mb-8">{project.description}</p>
 
-                {project.role && (
-                  <div className="mb-8 bg-primary/10 border-l-4 border-primary p-6">
+                {project.role && <div className="mb-8 bg-primary/10 border-l-4 border-primary p-6">
                     <h3 className="text-xl font-serif text-charcoal mb-3">My Role</h3>
                     <p className="text-muted-foreground">{project.role}</p>
-                  </div>
-                )}
+                  </div>}
 
               </motion.div>
 
               {/* Sidebar Stats */}
-              <motion.div
-                initial={{ x: 30, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="bg-charcoal text-cream p-8 h-fit"
-              >
+              <motion.div initial={{
+              x: 30,
+              opacity: 0
+            }} whileInView={{
+              x: 0,
+              opacity: 1
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.5,
+              duration: 0.6
+            }} className="bg-charcoal text-cream p-8 h-fit">
                 <h3 className="text-xl font-serif mb-6 text-primary">Project Details</h3>
                 <div className="space-y-6">
-                  {project.duration && (
-                    <div className="flex items-center gap-4">
+                  {project.duration && <div className="flex items-center gap-4">
                       <Clock className="w-5 h-5 text-primary" />
                       <div>
                         <p className="text-cream/60 text-sm">Duration</p>
                         <p className="text-lg">{project.duration}</p>
                       </div>
-                    </div>
-                  )}
-                  {project.sqft && (
-                    <div className="flex items-center gap-4">
+                    </div>}
+                  {project.sqft && <div className="flex items-center gap-4">
                       <Maximize2 className="w-5 h-5 text-primary" />
                       <div>
-                        <p className="text-cream/60 text-sm">Square Feet</p>
+                        <p className="text-cream/60 text-sm">Gallons</p>
                         <p className="text-lg">{project.sqft}</p>
                       </div>
-                    </div>
-                  )}
-                  {project.bedrooms && (
-                    <div className="flex items-center gap-4">
+                    </div>}
+                  {project.bedrooms && <div className="flex items-center gap-4">
                       <Home className="w-5 h-5 text-primary" />
                       <div>
                         <p className="text-cream/60 text-sm">Bedrooms</p>
                         <p className="text-lg">{project.bedrooms}</p>
                       </div>
-                    </div>
-                  )}
-                  {project.baths && (
-                    <div className="flex items-center gap-4">
+                    </div>}
+                  {project.baths && <div className="flex items-center gap-4">
                       <Bath className="w-5 h-5 text-primary" />
                       <div>
                         <p className="text-cream/60 text-sm">Bathrooms</p>
                         <p className="text-lg">{project.baths}</p>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                 </div>
               </motion.div>
             </div>
@@ -199,12 +203,15 @@ const ProjectDetail = () => {
         {/* Gallery */}
         <section className="py-16 bg-charcoal">
           <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
+            <motion.div initial={{
+            opacity: 0
+          }} whileInView={{
+            opacity: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.2
+          }}>
               <h2 className="text-3xl font-serif text-cream mb-8">Gallery</h2>
               {isAdmin && (
                 <p className="text-cream/60 text-sm mb-4">Enter a number to reorder images</p>
@@ -229,11 +236,7 @@ const ProjectDetail = () => {
         <section className="py-12 bg-cream border-t border-border">
           <div className="container mx-auto px-6">
             <div className="flex justify-between items-center">
-              {prevProject ? (
-                <Link
-                  to={`/project/${prevProject.id}`}
-                  className="flex items-center gap-3 group"
-                >
+              {prevProject ? <Link to={`/project/${prevProject.id}`} className="flex items-center gap-3 group">
                   <ArrowLeft className="w-5 h-5 text-charcoal group-hover:text-primary transition-colors" />
                   <div>
                     <p className="text-sm text-muted-foreground">Previous Project</p>
@@ -241,15 +244,8 @@ const ProjectDetail = () => {
                       {prevProject.title}
                     </p>
                   </div>
-                </Link>
-              ) : (
-                <div />
-              )}
-              {nextProject && (
-                <Link
-                  to={`/project/${nextProject.id}`}
-                  className="flex items-center gap-3 text-right group"
-                >
+                </Link> : <div />}
+              {nextProject && <Link to={`/project/${nextProject.id}`} className="flex items-center gap-3 text-right group">
                   <div>
                     <p className="text-sm text-muted-foreground">Next Project</p>
                     <p className="font-serif text-charcoal group-hover:text-primary transition-colors">
@@ -257,62 +253,46 @@ const ProjectDetail = () => {
                     </p>
                   </div>
                   <ArrowRight className="w-5 h-5 text-charcoal group-hover:text-primary transition-colors" />
-                </Link>
-              )}
+                </Link>}
             </div>
           </div>
         </section>
 
         {/* Lightbox */}
         <AnimatePresence>
-          {selectedImage !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center"
-            >
-              <button
-                onClick={closeLightbox}
-                className="absolute top-6 right-6 text-cream hover:text-primary transition-colors"
-                aria-label="Close lightbox"
-              >
+          {selectedImage !== null && <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} exit={{
+          opacity: 0
+        }} className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center">
+              <button onClick={closeLightbox} className="absolute top-6 right-6 text-cream hover:text-primary transition-colors" aria-label="Close lightbox">
                 <X className="w-8 h-8" />
               </button>
 
-              <button
-                onClick={prevImage}
-                disabled={selectedImage === 0}
-                className="absolute left-6 text-cream hover:text-primary transition-colors disabled:opacity-30"
-                aria-label="Previous image"
-              >
+              <button onClick={prevImage} disabled={selectedImage === 0} className="absolute left-6 text-cream hover:text-primary transition-colors disabled:opacity-30" aria-label="Previous image">
                 <ChevronLeft className="w-12 h-12" />
               </button>
 
-              <motion.img
-                key={selectedImage}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                src={galleryImages[selectedImage]}
-                alt={`${project.title} - Image ${selectedImage + 1}`}
-                className="max-h-[85vh] max-w-[85vw] object-contain"
-              />
+              <motion.img key={selectedImage} initial={{
+            opacity: 0,
+            scale: 0.9
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} transition={{
+            duration: 0.3
+          }} src={galleryImages[selectedImage]} alt={`${project.title} - Image ${selectedImage + 1}`} className="max-h-[85vh] max-w-[85vw] object-contain" />
 
-              <button
-                onClick={nextImage}
-                disabled={selectedImage === galleryImages.length - 1}
-                className="absolute right-6 text-cream hover:text-primary transition-colors disabled:opacity-30"
-                aria-label="Next image"
-              >
+              <button onClick={nextImage} disabled={selectedImage === galleryImages.length - 1} className="absolute right-6 text-cream hover:text-primary transition-colors disabled:opacity-30" aria-label="Next image">
                 <ChevronRight className="w-12 h-12" />
               </button>
 
               <div className="absolute bottom-6 text-cream/60 text-sm">
                 {selectedImage + 1} / {galleryImages.length}
               </div>
-            </motion.div>
-          )}
+            </motion.div>}
         </AnimatePresence>
 
         {/* AI Redesign Dialog */}
@@ -323,8 +303,6 @@ const ProjectDetail = () => {
           onSave={handleSaveRedesign}
         />
       </motion.div>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default ProjectDetail;
