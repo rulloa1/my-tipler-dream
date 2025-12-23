@@ -154,7 +154,6 @@ const Design = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-<<<<<<< HEAD
             {designAlbums
               .filter((album) =>
                 [
@@ -194,7 +193,6 @@ const Design = () => {
                   </div>
                 </Link>
               ))}
-=======
             {developmentConcepts.map((concept, index) => <div key={index} className={`bg-card p-8 border border-border hover:border-primary/30 hover:-translate-y-2 hover:shadow-xl transition-all duration-500 text-center ${developmentAnimation.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{
             transitionDelay: `${(index + 1) * 100}ms`
           }}>
@@ -205,7 +203,6 @@ const Design = () => {
                     </span>)}
                 </div>
               </div>)}
->>>>>>> 37ff467fccbae27458f44f5274f95579e483f228
           </div>
         </div>
       </section>
@@ -223,7 +220,6 @@ const Design = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-<<<<<<< HEAD
             {designAlbums
               .filter(
                 (album) =>
@@ -251,7 +247,6 @@ const Design = () => {
                   </Link>
                 </div>
               ))}
-=======
             {designAlbums.map(album => <div key={album.id} className="group cursor-pointer">
                 <div className="overflow-hidden rounded-lg mb-4 aspect-[4/3] relative">
                   <img src={album.coverImage} alt={album.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -263,7 +258,6 @@ const Design = () => {
                   <Button variant="outline">View Collection</Button>
                 </Link>
               </div>)}
->>>>>>> 37ff467fccbae27458f44f5274f95579e483f228
           </div>
         </div>
       </section>
