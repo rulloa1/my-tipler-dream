@@ -127,7 +127,7 @@ export const projects: Project[] = [
     subtitle: "N. Utah Craftsman Estate",
     category: "Design Build",
     location: "N. Utah",
-    coverImage: "/projects/syracuse-final/syracuse-1.png",
+    coverImage: "/projects/syracuse-cover.png",
     duration: "18 months",
     sqft: "6,200",
     role: "Owners Rep, Designer Architectural, Interior Designer, Project Management, Property Management",

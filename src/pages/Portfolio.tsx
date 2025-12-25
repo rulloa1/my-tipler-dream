@@ -28,25 +28,50 @@ const Portfolio = () => {
       {/* Hero - Full Split Layout */}
       <section className="min-h-screen flex flex-col lg:flex-row">
         {/* Left - Dark Hero with Hexagonal Logo */}
-        <div className="relative flex-1 bg-gradient-to-br from-charcoal to-charcoal-light flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-screen">
-          {/* Background overlay pattern */}
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(201,169,97,0.1)_0%,transparent_50%)]" />
-          
+        <div className="relative flex-1 bg-charcoal flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-screen">
+
+          {/* Dynamic Scrolling Background */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <motion.div
+              animate={{ y: ["-2%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: 60,
+                ease: "linear",
+              }}
+              className="grid grid-cols-3 gap-2 w-[150%] -ml-[25%]" // Wider than container to cover fully
+            >
+              {/* Duplicate projects array 4 times to ensure ample scrolling content */}
+              {[...projects, ...projects, ...projects, ...projects].map((p, i) => (
+                <div key={i} className="aspect-[4/5] relative overflow-hidden bg-charcoal-light/20">
+                  <img
+                    src={p.coverImage}
+                    alt=""
+                    className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-700"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Dark Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/90 via-charcoal/80 to-charcoal/90 z-0" />
+
           {/* Main Content */}
           <div className="relative z-10 text-center px-8 py-16">
             {/* Hexagonal Logo */}
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative w-56 h-56 md:w-72 md:h-72 mx-auto mb-12 group"
             >
               {/* Hexagon Background with pulse animation */}
-              <motion.div 
+              <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-gradient-to-br from-primary to-gold-dark"
-                style={{ 
+                className="absolute inset-0 bg-gradient-to-br from-primary to-gold-dark shadow-2xl"
+                style={{
                   clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
                 }}
               />
@@ -61,7 +86,7 @@ const Portfolio = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="font-sans text-2xl md:text-4xl font-light tracking-[0.5em] text-cream mb-4"
+              className="font-sans text-2xl md:text-4xl font-light tracking-[0.5em] text-cream mb-4 drop-shadow-lg"
             >
               MICHAEL CHANDLER
             </motion.h1>
@@ -71,21 +96,21 @@ const Portfolio = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="font-sans text-base md:text-lg tracking-[0.75em] text-primary"
+              className="font-sans text-base md:text-lg tracking-[0.75em] text-primary drop-shadow-md"
             >
               PORTFOLIO
             </motion.p>
           </div>
 
           {/* Vertical Side Text */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="absolute bottom-10 left-10 hidden lg:block"
+            className="absolute bottom-10 left-10 hidden lg:block z-20"
           >
-            <p 
-              className="text-xs tracking-[0.25em] text-cream/30 font-medium"
+            <p
+              className="text-xs tracking-[0.25em] text-cream/50 font-medium"
               style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
             >
               PORTFOLIO
@@ -103,7 +128,7 @@ const Portfolio = () => {
           <div className="flex justify-between items-center px-10 lg:px-16 py-10 bg-card shadow-sm">
             <div className="flex items-center gap-5">
               {/* Mini Hexagon Logo */}
-              <div 
+              <div
                 className="w-12 h-12 bg-gradient-to-br from-primary to-gold-dark flex items-center justify-center"
                 style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
               >
@@ -164,7 +189,7 @@ const Portfolio = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <span 
+                <span
                   className="block font-serif text-7xl md:text-8xl font-light leading-none mb-3"
                   style={{
                     background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%)',
@@ -184,7 +209,7 @@ const Portfolio = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                <span 
+                <span
                   className="block font-serif text-7xl md:text-8xl font-light leading-none mb-3"
                   style={{
                     background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%)',
@@ -216,8 +241,8 @@ const Portfolio = () => {
                 transition={{ delay: 1 + (index * 0.1) }}
                 onClick={() => setActiveFilter(cat)}
                 className={`px-5 py-2.5 text-sm tracking-[2px] transition-all rounded-full border ${activeFilter === cat
-                    ? "bg-charcoal text-cream border-charcoal"
-                    : "bg-transparent text-foreground border-border hover:border-charcoal"
+                  ? "bg-charcoal text-cream border-charcoal"
+                  : "bg-transparent text-foreground border-border hover:border-charcoal"
                   }`}
               >
                 {cat} ({cat === "All" ? projects.length : projects.filter(p => p.category === cat).length})
