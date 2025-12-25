@@ -60,24 +60,21 @@ const Portfolio = () => {
 
           {/* Main Content */}
           <div className="relative z-10 text-center px-8 py-16">
-            {/* Hexagonal Logo */}
+            {/* Logo Animation */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-56 h-56 md:w-72 md:h-72 mx-auto mb-12 group"
+              className="relative w-56 h-56 md:w-72 md:h-72 mx-auto mb-12"
             >
-              {/* Transparent Hexagon with border */}
-              <div
-                className="absolute inset-0 border-2 border-primary/40 bg-charcoal/20 backdrop-blur-sm"
-                style={{
-                  clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                }}
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="font-serif text-4xl md:text-5xl font-bold text-primary">MC</span>
-                </div>
-              </div>
+              <video
+                src={logoVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-contain"
+              />
             </motion.div>
 
             {/* Title */}
