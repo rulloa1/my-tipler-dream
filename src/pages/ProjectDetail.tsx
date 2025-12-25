@@ -222,6 +222,7 @@ const ProjectDetail = () => {
                 <NumberedGallery
                   images={galleryImages}
                   projectTitle={project.title}
+                  projectId={id}
                   onImageClick={openLightbox}
                   onOrderChange={saveGalleryOrder}
                   onEditImage={handleEditImage}
