@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { projects, categories } from "@/data/projects";
 import { motion, AnimatePresence } from "framer-motion";
+import logoVideo from "@/assets/logo-animation.mp4";
 
 const Portfolio = () => {
   const [searchParams] = useSearchParams();
@@ -70,15 +71,20 @@ const Portfolio = () => {
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-gradient-to-br from-primary to-gold-dark shadow-2xl"
+                className="absolute inset-0 shadow-2xl"
                 style={{
                   clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
                 }}
-              />
-              {/* Logo Text */}
-              <span className="absolute inset-0 flex items-center justify-center font-serif text-6xl md:text-7xl font-bold text-cream drop-shadow-lg">
-                MC
-              </span>
+              >
+                <video
+                  src={logoVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
             </motion.div>
 
             {/* Title */}

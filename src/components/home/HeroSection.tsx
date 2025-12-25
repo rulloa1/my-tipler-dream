@@ -29,9 +29,8 @@ const HeroSection = () => {
       {heroImages.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
         >
           <img
             src={image}
@@ -51,7 +50,7 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl text-primary tracking-[0.4em] uppercase mb-8">
             Design • Build • Develop
           </p>
-          
+
           {/* Stats Container */}
           <div className="grid grid-cols-2 gap-12 md:gap-20 mb-10">
             <div className="text-center">
@@ -97,9 +96,8 @@ const HeroSection = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-12 h-1 transition-all ${
-              index === currentSlide ? "bg-primary" : "bg-cream/40"
-            }`}
+            className={`w-12 h-1 transition-all ${index === currentSlide ? "bg-primary" : "bg-cream/40"
+              }`}
           />
         ))}
       </div>
