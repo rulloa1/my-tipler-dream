@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { projects, categories } from "@/data/projects";
@@ -13,7 +13,6 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState(categoryFromUrl || "All");
   const navigate = useNavigate();
 
-  // Update filter when URL changes
   useEffect(() => {
     if (categoryFromUrl && categories.includes(categoryFromUrl)) {
       setActiveFilter(categoryFromUrl);
@@ -28,9 +27,8 @@ const Portfolio = () => {
     <Layout>
       {/* Hero - Full Split Layout */}
       <section className="min-h-screen flex flex-col lg:flex-row">
-        {/* Left - Dark Hero with Hexagonal Logo */}
+        {/* Left - Dark Hero */}
         <div className="relative flex-1 bg-charcoal flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-screen">
-
           {/* Static Project Photo Collage Background */}
           <div className="absolute inset-0">
             <div className="grid h-full w-full grid-cols-3 grid-rows-3">
@@ -42,11 +40,11 @@ const Portfolio = () => {
                   aria-hidden="true"
                   loading={i < 3 ? "eager" : "lazy"}
                   decoding="async"
-                  className="h-full w-full object-cover opacity-35 blur-[1px] saturate-90"
+                  className="h-full w-full object-cover opacity-25 grayscale"
                 />
               ))}
             </div>
-            <div className="absolute inset-0 bg-charcoal/55" />
+            <div className="absolute inset-0 bg-charcoal/70" />
           </div>
 
           {/* Logo Animation Layer */}
@@ -57,75 +55,81 @@ const Portfolio = () => {
               loop
               muted
               playsInline
-              className="w-full h-full object-cover opacity-55"
+              className="w-full h-full object-cover opacity-40"
             />
           </div>
 
-          {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/55 to-charcoal/85 z-0" />
+          {/* Subtle Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-transparent to-charcoal/80 z-0" />
 
           {/* Main Content */}
-          <div className="relative z-10 text-center px-8 py-16">
-            {/* Title */}
+          <div className="relative z-10 text-center px-12 py-24">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="text-[10px] tracking-[0.4em] text-cream/50 uppercase mb-8"
+            >
+              Michael Chandler
+            </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="font-sans text-2xl md:text-4xl font-light tracking-[0.5em] text-cream mb-4 drop-shadow-lg"
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-cream mb-6 tracking-tight"
             >
-              MICHAEL CHANDLER
+              Portfolio
             </motion.h1>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 60 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="h-[1px] bg-gold mx-auto"
+            />
           </div>
 
           {/* Vertical Side Text */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="absolute bottom-10 left-10 hidden lg:block z-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+            className="absolute bottom-16 left-12 hidden lg:block z-20"
           >
             <p
-              className="text-xs tracking-[0.25em] text-cream/50 font-medium"
+              className="text-[9px] tracking-[0.35em] text-cream/30 font-light uppercase"
               style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
             >
-              PORTFOLIO
+              Design & Construction
             </p>
           </motion.div>
         </div>
 
         {/* Right - Content Section */}
         <div className="relative flex-1 bg-background flex flex-col">
-          {/* Decorative Corner Accents */}
-          <div className="absolute top-10 right-10 w-24 h-24 border-t-2 border-r-2 border-primary/20 hidden lg:block" />
-          <div className="absolute bottom-10 left-10 w-24 h-24 border-b-2 border-l-2 border-primary/20 hidden lg:block" />
+          {/* Minimal Corner Accent */}
+          <div className="absolute top-16 right-16 w-20 h-20 border-t border-r border-border hidden lg:block" />
 
-          {/* Header */}
-          <div className="flex justify-between items-center px-10 lg:px-16 py-10 bg-card shadow-sm">
-            <div className="flex items-center gap-5">
-              {/* Mini Hexagon Logo */}
-              <div
-                className="w-12 h-12 bg-gradient-to-br from-primary to-gold-dark flex items-center justify-center"
-                style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-              >
-                <span className="font-serif text-sm font-bold text-cream">MC</span>
-              </div>
+          {/* Header Area */}
+          <div className="flex justify-between items-center px-12 lg:px-20 py-12">
+            <div className="w-8 h-8 bg-gold flex items-center justify-center">
+              <span className="font-serif text-[10px] font-medium text-charcoal">MC</span>
             </div>
-            <span className="text-sm tracking-[0.2em] text-primary font-medium cursor-pointer hover:text-gold-dark transition-colors">
-              PORTFOLIO
+            <span className="text-[10px] tracking-[0.25em] text-muted-foreground font-light uppercase">
+              Est. 1987
             </span>
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 flex flex-col justify-center px-10 lg:px-16 py-12">
+          <div className="flex-1 flex flex-col justify-center px-12 lg:px-20 py-16">
             {/* Back Button */}
             <motion.button
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
               onClick={() => navigate(-1)}
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all mb-10 self-start group"
+              className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-all mb-16 self-start group text-[11px] tracking-[0.15em] uppercase font-light"
             >
-              <span className="text-lg group-hover:-translate-x-1 transition-transform">←</span>
+              <span className="text-sm group-hover:-translate-x-1 transition-transform">←</span>
               Back
             </motion.button>
 
@@ -134,17 +138,17 @@ const Portfolio = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-foreground mb-8 tracking-tight leading-[1.1]"
             >
-              Project Collection
+              Project<br />Collection
             </motion.h2>
 
-            {/* Gold Underline Accent */}
+            {/* Subtle Gold Line */}
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: 80 }}
+              animate={{ width: 40 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="h-1 bg-gradient-to-r from-primary to-transparent mb-8"
+              className="h-[1px] bg-gold mb-10"
             />
 
             {/* Description */}
@@ -152,30 +156,23 @@ const Portfolio = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="text-lg leading-relaxed text-muted-foreground max-w-xl mb-16"
+              className="text-sm leading-relaxed text-muted-foreground max-w-md mb-20 font-light"
             >
-              A curated selection of residential, commercial, and hospitality projects showcasing 37 years of design excellence and meticulous craftsmanship.
+              A curated selection of residential, commercial, and hospitality projects 
+              showcasing 37 years of design excellence and meticulous craftsmanship.
             </motion.p>
 
-            {/* Stats Section */}
-            <div className="grid grid-cols-2 gap-20 mt-auto">
+            {/* Stats Section - Refined */}
+            <div className="grid grid-cols-2 gap-16 mt-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <span
-                  className="block font-serif text-7xl md:text-8xl font-light leading-none mb-3"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
+                <span className="block font-serif text-6xl md:text-7xl font-light text-gold leading-none mb-4">
                   19
                 </span>
-                <span className="text-xs tracking-[0.2em] text-muted-foreground font-medium uppercase">
+                <span className="text-[10px] tracking-[0.2em] text-muted-foreground font-light uppercase">
                   Signature Projects
                 </span>
               </motion.div>
@@ -184,18 +181,10 @@ const Portfolio = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                <span
-                  className="block font-serif text-7xl md:text-8xl font-light leading-none mb-3"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-dark)) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
+                <span className="block font-serif text-6xl md:text-7xl font-light text-gold leading-none mb-4">
                   37
                 </span>
-                <span className="text-xs tracking-[0.2em] text-muted-foreground font-medium uppercase">
+                <span className="text-[10px] tracking-[0.2em] text-muted-foreground font-light uppercase">
                   Years of Excellence
                 </span>
               </motion.div>
@@ -204,10 +193,10 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="bg-background py-6 border-b border-border sticky top-0 z-10 backdrop-blur-sm bg-background/90">
-        <div className="container mx-auto px-10 lg:px-16">
-          <div className="flex flex-wrap gap-3">
+      {/* Filters - Minimal & Clean */}
+      <section className="bg-background py-10 border-b border-border sticky top-0 z-10 backdrop-blur-sm bg-background/95">
+        <div className="container mx-auto px-12 lg:px-20">
+          <div className="flex flex-wrap gap-6">
             {categories.map((cat, index) => (
               <motion.button
                 key={cat}
@@ -215,53 +204,61 @@ const Portfolio = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + (index * 0.1) }}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-5 py-2.5 text-sm tracking-[2px] transition-all rounded-full border ${activeFilter === cat
-                  ? "bg-charcoal text-cream border-charcoal"
-                  : "bg-transparent text-foreground border-border hover:border-charcoal"
-                  }`}
+                className={`text-[11px] tracking-[0.2em] uppercase font-light transition-all duration-300 pb-2 border-b ${
+                  activeFilter === cat
+                    ? "text-foreground border-gold"
+                    : "text-muted-foreground border-transparent hover:text-foreground hover:border-border"
+                }`}
               >
-                {cat} ({cat === "All" ? projects.length : projects.filter(p => p.category === cat).length})
+                {cat}
               </motion.button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="py-16 bg-background min-h-screen">
-        <div className="container mx-auto px-10 lg:px-16">
+      {/* Projects Grid - Clean & Aligned */}
+      <section className="py-24 bg-background min-h-screen">
+        <div className="container mx-auto px-12 lg:px-20">
           <motion.div
             layout
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   key={project.id}
                 >
                   <Link
                     to={`/project/${project.id}`}
-                    className="group relative aspect-[4/3] block overflow-hidden cursor-pointer"
+                    className="group block overflow-hidden"
                   >
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-primary text-xs tracking-widest uppercase mb-1">{project.category}</p>
-                      <h3 className="text-xl font-serif text-cream group-hover:text-primary transition-colors mb-1">{project.title}</h3>
-                      <p className="text-cream/70 text-sm">{project.subtitle}</p>
-                      <p className="text-cream/50 text-xs mt-2">{project.location}</p>
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-muted mb-5">
+                      <img
+                        src={project.coverImage}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-500" />
                     </div>
-                    <div className="absolute top-4 right-4 w-10 h-10 bg-primary/0 group-hover:bg-primary flex items-center justify-center transition-all rounded-full scale-0 group-hover:scale-100 duration-300">
-                      <ArrowRight className="w-5 h-5 text-cream" />
+                    
+                    {/* Text Content */}
+                    <div className="space-y-2">
+                      <p className="text-[10px] tracking-[0.2em] text-gold uppercase font-light">
+                        {project.category}
+                      </p>
+                      <h3 className="font-serif text-xl text-foreground group-hover:text-gold transition-colors duration-300 font-light">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground font-light">
+                        {project.location}
+                      </p>
                     </div>
                   </Link>
                 </motion.div>
@@ -269,15 +266,21 @@ const Portfolio = () => {
             </AnimatePresence>
           </motion.div>
 
+          {/* CTA - Refined */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mt-16"
+            className="text-center mt-24"
           >
             <Link to="/contact">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-gold-dark transition-all duration-300 hover:scale-105">
-                Start Your Project <ArrowRight className="w-4 h-4 ml-2" />
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-charcoal text-charcoal hover:bg-charcoal hover:text-cream transition-all duration-500 text-[11px] tracking-[0.2em] uppercase font-light px-10 py-6"
+              >
+                Start Your Project
+                <ArrowRight className="w-4 h-4 ml-3" />
               </Button>
             </Link>
           </motion.div>
