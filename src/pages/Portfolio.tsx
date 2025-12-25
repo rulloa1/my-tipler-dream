@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { projects, categories } from "@/data/projects";
 import { motion, AnimatePresence } from "framer-motion";
-import logoVideo from "@/assets/logo-animation.mp4";
+
 
 const Portfolio = () => {
   const [searchParams] = useSearchParams();
@@ -47,17 +47,6 @@ const Portfolio = () => {
             <div className="absolute inset-0 bg-charcoal/70" />
           </div>
 
-          {/* Logo Animation Layer */}
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <video
-              src={logoVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover opacity-40"
-            />
-          </div>
 
           {/* Subtle Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-transparent to-charcoal/80 z-0" />
