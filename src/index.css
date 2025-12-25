@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,111 +8,111 @@
 
 @layer base {
   :root {
-    /* Cream/Off-white backgrounds */
-    --background: 40 30% 97%;
-    --foreground: 0 0% 17%;
+    /* Refined off-white backgrounds */
+    --background: 30 15% 98%;
+    --foreground: 0 0% 12%;
 
-    /* Warm cream card */
-    --card: 40 25% 95%;
-    --card-foreground: 0 0% 17%;
+    /* Subtle warm card */
+    --card: 30 10% 96%;
+    --card-foreground: 0 0% 12%;
 
-    --popover: 40 25% 95%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 30 10% 96%;
+    --popover-foreground: 0 0% 12%;
 
-    /* Refined gold primary - #C9A961 */
-    --primary: 42 48% 59%;
-    --primary-foreground: 40 30% 97%;
+    /* Muted gold primary - sophisticated */
+    --primary: 40 35% 52%;
+    --primary-foreground: 30 15% 98%;
 
-    /* Warm gray secondary */
-    --secondary: 40 15% 88%;
-    --secondary-foreground: 0 0% 17%;
+    /* Cool gray secondary */
+    --secondary: 30 8% 92%;
+    --secondary-foreground: 0 0% 12%;
 
-    /* Muted tones */
-    --muted: 40 10% 90%;
-    --muted-foreground: 0 0% 40%;
+    /* Refined muted tones */
+    --muted: 30 6% 94%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Gold accent - #E8D5A0 */
-    --accent: 45 57% 77%;
-    --accent-foreground: 0 0% 17%;
+    /* Subtle gold accent */
+    --accent: 40 30% 68%;
+    --accent-foreground: 0 0% 12%;
 
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 85%;
-    --input: 40 15% 85%;
-    --ring: 42 48% 59%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 40 35% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0rem;
 
-    /* Custom luxury colors - Refined palette */
-    --gold: 42 48% 59%;
-    --gold-light: 45 57% 77%;
-    --gold-dark: 42 50% 45%;
-    --charcoal: 0 0% 10%;
-    --charcoal-light: 0 0% 17%;
-    --cream: 40 30% 97%;
-    --cream-dark: 40 25% 92%;
-    --warm-gray: 0 0% 40%;
+    /* High-end architectural palette */
+    --gold: 40 35% 52%;
+    --gold-light: 40 30% 68%;
+    --gold-dark: 40 40% 40%;
+    --charcoal: 0 0% 8%;
+    --charcoal-light: 0 0% 14%;
+    --cream: 30 15% 98%;
+    --cream-dark: 30 10% 93%;
+    --warm-gray: 0 0% 50%;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 40 30% 97%;
-    --sidebar-primary: 42 48% 59%;
-    --sidebar-primary-foreground: 40 30% 97%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 40 30% 97%;
-    --sidebar-border: 0 0% 17%;
-    --sidebar-ring: 42 48% 59%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 30 15% 98%;
+    --sidebar-primary: 40 35% 52%;
+    --sidebar-primary-foreground: 30 15% 98%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 30 15% 98%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 40 35% 52%;
   }
 
   .dark {
-    /* Dark mode: Charcoal backgrounds - #1A1A1A */
-    --background: 0 0% 10%;
-    --foreground: 40 25% 95%;
+    /* Deep charcoal backgrounds */
+    --background: 0 0% 6%;
+    --foreground: 30 10% 94%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 40 25% 95%;
+    --card: 0 0% 9%;
+    --card-foreground: 30 10% 94%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 40 25% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 30 10% 94%;
 
-    /* Refined gold for dark mode */
-    --primary: 42 48% 59%;
-    --primary-foreground: 0 0% 10%;
+    /* Muted gold for dark mode */
+    --primary: 40 35% 52%;
+    --primary-foreground: 0 0% 6%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 40 25% 95%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 30 10% 94%;
 
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 0 0% 55%;
 
-    /* Gold accent */
-    --accent: 45 57% 77%;
-    --accent-foreground: 0 0% 10%;
+    /* Subtle gold accent */
+    --accent: 40 30% 68%;
+    --accent-foreground: 0 0% 6%;
 
     --destructive: 0 65% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 17%;
-    --input: 0 0% 17%;
-    --ring: 42 48% 59%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 40 35% 52%;
 
-    --gold: 42 48% 59%;
-    --gold-light: 45 57% 77%;
-    --gold-dark: 42 50% 45%;
-    --charcoal: 0 0% 10%;
-    --charcoal-light: 0 0% 17%;
-    --cream: 40 25% 95%;
-    --cream-dark: 40 20% 85%;
-    --warm-gray: 0 0% 40%;
+    --gold: 40 35% 52%;
+    --gold-light: 40 30% 68%;
+    --gold-dark: 40 40% 40%;
+    --charcoal: 0 0% 6%;
+    --charcoal-light: 0 0% 14%;
+    --cream: 30 10% 94%;
+    --cream-dark: 30 8% 85%;
+    --warm-gray: 0 0% 50%;
 
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 40 25% 95%;
-    --sidebar-primary: 42 48% 59%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 40 25% 95%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 42 48% 59%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 30 10% 94%;
+    --sidebar-primary: 40 35% 52%;
+    --sidebar-primary-foreground: 0 0% 6%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 30 10% 94%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 40 35% 52%;
   }
 }
 
@@ -123,23 +123,27 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
   }
 }
 
 @layer components {
   .luxury-heading {
-    @apply font-serif tracking-wide;
-    font-family: 'Playfair Display', serif;
+    @apply font-serif tracking-tight;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
   }
 
   .luxury-body {
-    @apply font-sans tracking-wide;
-    font-family: 'Montserrat', sans-serif;
+    @apply font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.01em;
   }
 
   .gold-gradient {
