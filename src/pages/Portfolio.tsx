@@ -2,16 +2,24 @@ import Layout from "@/components/layout/Layout";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projects, categories } from "@/data/projects";
-import { motion, AnimatePresence } from "framer-motion";
-
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 const Portfolio = () => {
   const [searchParams] = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
   const [activeFilter, setActiveFilter] = useState(categoryFromUrl || "All");
   const navigate = useNavigate();
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   useEffect(() => {
     if (categoryFromUrl && categories.includes(categoryFromUrl)) {
@@ -26,11 +34,14 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero - Full Split Layout */}
-      <section className="min-h-screen flex flex-col lg:flex-row">
+      <section ref={heroRef} className="min-h-screen flex flex-col lg:flex-row">
         {/* Left - Dark Hero */}
         <div className="relative flex-1 bg-charcoal flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-screen">
-          {/* Static Project Photo Collage Background */}
-          <div className="absolute inset-0">
+          {/* Parallax Project Photo Collage Background */}
+          <motion.div 
+            className="absolute inset-0"
+            style={{ y: backgroundY, scale: backgroundScale }}
+          >
             <div className="grid h-full w-full grid-cols-3 grid-rows-3">
               {projects.slice(0, 9).map((p, i) => (
                 <img
@@ -44,8 +55,8 @@ const Portfolio = () => {
                 />
               ))}
             </div>
-            <div className="absolute inset-0 bg-charcoal/70" />
-          </div>
+          </motion.div>
+          <div className="absolute inset-0 bg-charcoal/70" />
 
 
           {/* Subtle Gradient Overlay */}
