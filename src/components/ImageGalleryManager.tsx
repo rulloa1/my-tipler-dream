@@ -28,16 +28,24 @@ const ImageGalleryManager = () => {
     is_after: false
   })) || [];
 
+  const [uploading, setUploading] = useState(false);
+
+  // ... (existing code)
+
   const handleUpload = async (file: File) => {
     if (!selectedProject) return;
+    setUploading(true);
     toast.info("Upload logic to be implemented with Supabase Storage");
     // Implementation placeholder
+    setTimeout(() => setUploading(false), 1000);
   };
 
   const handleUrlAdd = async (url: string, title: string) => {
     if (!selectedProject) return;
+    setUploading(true);
 
-    const { error } = await supabase.from('project_images').insert({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from('project_images' as any).insert({
       project_id: selectedProject,
       image_url: url,
       display_order: galleryImages.length,
@@ -50,6 +58,7 @@ const ImageGalleryManager = () => {
       toast.success("Image added successfully");
       // Ideally trigger refetch or update local state
     }
+    setUploading(false);
   };
 
   const handleDelete = async (image: ProjectImage) => {
@@ -60,8 +69,9 @@ const ImageGalleryManager = () => {
     // Update display_order in DB
   };
 
-  const handleToggle = (id: string, type: 'before' | 'after') => {
+  const handleToggle = (image: ProjectImage, field: 'is_before' | 'is_after') => {
     // Toggle logic
+    console.log("Toggling", image.id, field);
   };
 
   return (
@@ -99,7 +109,12 @@ const ImageGalleryManager = () => {
             <CardTitle>Manage: {activeProject.title}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <ImageUploader onUpload={handleUpload} onUrlAdd={handleUrlAdd} />
+            <ImageUploader
+              selectedProject={selectedProject}
+              uploading={uploading}
+              onFileUpload={handleUpload}
+              onUrlAdd={handleUrlAdd}
+            />
             <ImageGrid
               images={galleryImages}
               onDelete={handleDelete}
