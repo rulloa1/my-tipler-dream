@@ -11,6 +11,7 @@ import Design from "./pages/Design";
 import DesignDetail from "./pages/DesignDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ImageGalleryManager from "./components/ImageGalleryManager";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/design" element={<Design />} />
           <Route path="/design/:id" element={<DesignDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/gallery" element={<ImageGalleryManager />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="block">
-              <img 
-                src={mcLogo} 
-                alt="Michael Chandler Logo" 
+              <img
+                src={mcLogo}
+                alt="Michael Chandler Logo"
                 className="h-16 w-auto"
               />
             </Link>
@@ -29,6 +29,7 @@ const Footer = () => {
               <Link to="/portfolio" className="block text-cream/70 hover:text-primary transition-colors text-sm">Portfolio</Link>
               <Link to="/services" className="block text-cream/70 hover:text-primary transition-colors text-sm">Services</Link>
               <Link to="/contact" className="block text-cream/70 hover:text-primary transition-colors text-sm">Contact</Link>
+              <Link to="/admin/gallery" className="block text-cream/70 hover:text-primary transition-colors text-sm">Gallery Manager</Link>
             </nav>
           </div>
 
