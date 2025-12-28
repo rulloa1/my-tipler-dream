@@ -41,9 +41,28 @@ const ImageGalleryManager = () => {
   const handleUpload = async (file: File) => {
     if (!selectedProject) return;
     setUploading(true);
-    toast.info("Upload logic to be implemented with Supabase Storage");
-    // Implementation placeholder
-    setTimeout(() => setUploading(false), 1000);
+
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${selectedProject}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('project-gallery')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('project-gallery')
+        .getPublicUrl(fileName);
+
+      await handleUrlAdd(publicUrl, file.name);
+    } catch (error) {
+      console.error("Upload failed:", error);
+      toast.error("Failed to upload image");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleUrlAdd = async (url: string, title: string) => {
@@ -84,7 +103,18 @@ const ImageGalleryManager = () => {
   };
 
   const handleDelete = async (image: ProjectImage) => {
-    toast.info("Delete logic to be implemented");
+    if (!confirm("Are you sure you want to delete this image?")) return;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from('project_images' as any).delete().eq('id', image.id);
+
+    if (error) {
+      console.error("Error deleting image:", error);
+      toast.error("Failed to delete image");
+    } else {
+      toast.success("Image deleted");
+      setLocalImages(localImages.filter(img => img.id !== image.id));
+    }
   };
 
   const handleReorder = async (newOrder: ProjectImage[]) => {
@@ -129,9 +159,23 @@ const ImageGalleryManager = () => {
     }
   };
 
-  const handleToggle = (image: ProjectImage, field: 'is_before' | 'is_after') => {
-    // Toggle logic
-    console.log("Toggling", image.id, field);
+  const handleToggle = async (image: ProjectImage, field: 'is_before' | 'is_after') => {
+    const newValue = !image[field];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from('project_images' as any)
+      .update({ [field]: newValue } as any)
+      .eq('id', image.id);
+
+    if (error) {
+      console.error(`Error toggling ${field}:`, error);
+      toast.error(`Failed to update ${field} status`);
+    } else {
+      setLocalImages(localImages.map(img =>
+        img.id === image.id ? { ...img, [field]: newValue } : img
+      ));
+      toast.success(`${field === 'is_before' ? 'Before' : 'After'} status updated`);
+    }
   };
 
   return (
