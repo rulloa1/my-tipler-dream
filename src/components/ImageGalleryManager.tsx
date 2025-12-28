@@ -86,8 +86,9 @@ const ImageGalleryManager = () => {
       toast.success("Image added successfully");
       // Update local state
       if (activeProject && data) {
+        const typedData = data as { id: string };
         const newImage: ProjectImage = {
-          id: data.id,
+          id: typedData.id,
           project_id: selectedProject,
           image_url: url,
           title: activeProject.title,
@@ -164,6 +165,7 @@ const ImageGalleryManager = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error } = await supabase.from('project_images' as any)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .update({ [field]: newValue } as any)
       .eq('id', image.id);
 

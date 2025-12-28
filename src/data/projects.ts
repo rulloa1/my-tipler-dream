@@ -1,38 +1,56 @@
-export const projects = [
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/53a433ea-59d6-4e14-bf0c-fdc98161de95",
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/92d67a73-04f9-4845-9fdf-caa1a301de1d",
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/69597742-403c-4c65-94da-c9099f00c294",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-6.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-7.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-8.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-9.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-10.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-11.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-12.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-13.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-14.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-15.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-16.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-17.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-18.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-19.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-20.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-21.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-22.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-23.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-24.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-25.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-26.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-27.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-28.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-29.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-30.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-31.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-32.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-33.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-34.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-35.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-36.webp",
-  "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-37.webp",
+export const categories = [
+  "All",
+  "Residential",
+  "Commercial",
+  "Hospitality",
+  "Pools",
+  "Interior"
 ];
+
+export interface ProjectData {
+  id: string;
+  title: string;
+  category: string;
+  coverImage: string;
+  location: string;
+  subtitle?: string;
+  description?: string;
+  gallery?: string[];
+}
+
+export const projects: ProjectData[] = [
+  {
+    id: "pool-design-1",
+    title: "Luxury Infinity Pool",
+    category: "Pools",
+    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
+    location: "Austin, TX",
+    description: "A stunning infinity edge pool with custom stone work."
+  },
+  {
+    id: "modern-residential-1",
+    title: "Modern Hill Country",
+    category: "Residential",
+    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-10.webp",
+    location: "West Lake Hills, TX",
+    description: "Contemporary residential design blending with nature."
+  },
+  {
+    id: "commercial-spa-1",
+    title: "Resort Wellness Center",
+    category: "Hospitality",
+    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-15.webp",
+    location: "San Antonio, TX",
+    description: "A luxury spa and wellness environment for a world-class resort."
+  },
+  {
+    id: "modern-kitchen-1",
+    title: "Chef's Dream Kitchen",
+    category: "Interior",
+    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-20.webp",
+    location: "Dallas, TX",
+    description: "A high-end kitchen renovation with professional-grade appliances."
+  }
+];
+
+export const getProjectById = (id: string) => projects.find(p => p.id === id);
