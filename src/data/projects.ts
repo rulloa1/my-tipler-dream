@@ -33,12 +33,11 @@ export interface ProjectData {
 export const projects: ProjectData[] = [
   {
     id: "pool-design-1",
-    title: "The Azure Infinity",
+    title: "Luxury Infinity Pool",
     category: "Pools",
     coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
     location: "Austin, TX",
-    subtitle: "Cantilevered Glass Edge",
-    description: "A feat of structural engineering, this project features a 40-foot cantilevered infinity edge that disappears into the hill country horizon. The design incorporates native Texas limestone and custom glass tiling from Italy.",
+    description: "A stunning infinity edge pool with custom stone work.",
     duration: "14 Months",
     gallons: "35,000",
     role: "Master Builder & Lead Technical Designer",
@@ -48,7 +47,7 @@ export const projects: ProjectData[] = [
       "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-1.webp"
     ],
     processView: {
-      beforeImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp", // Using cover as placeholder for sketch
+      beforeImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
       afterImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-1.webp",
       beforeLabel: "Structural Concept",
       afterLabel: "Final Build"
@@ -56,12 +55,11 @@ export const projects: ProjectData[] = [
   },
   {
     id: "modern-residential-1",
-    title: "Hill Country Modern",
+    title: "Modern Hill Country",
     category: "Residential",
     coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-10.webp",
     location: "West Lake Hills, TX",
-    subtitle: "Organic Minimalism",
-    description: "Nestled into the cliffs of West Lake Hills, this 6,500 sqft residence uses a palette of raw concrete, black steel, and warm cedar to create a home that feels both monumental and intimate.",
+    description: "Contemporary residential design blending with nature.",
     duration: "24 Months",
     sqft: "6,500",
     bedrooms: 5,
@@ -75,12 +73,11 @@ export const projects: ProjectData[] = [
   },
   {
     id: "commercial-spa-1",
-    title: "Aura Wellness Resort",
+    title: "Resort Wellness Center",
     category: "Hospitality",
     coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-15.webp",
     location: "San Antonio, TX",
-    subtitle: "Hydrotherapy Sanctuary",
-    description: "Winner of the 2022 Hospitality Design Award, this wellness center integrates seven unique thermal experiences, including a sub-zero 'snow room' and a magnesium-rich salt pool.",
+    description: "A luxury spa and wellness environment for a world-class resort.",
     duration: "18 Months",
     sqft: "12,000",
     role: "Design-Build Consultant",
@@ -92,12 +89,11 @@ export const projects: ProjectData[] = [
   },
   {
     id: "modern-kitchen-1",
-    title: "The Culinary Atelier",
+    title: "Chef's Dream Kitchen",
     category: "Interior",
     coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-20.webp",
     location: "Dallas, TX",
-    subtitle: "Professional Grade Living",
-    description: "Designed for a world-renowned chef, this kitchen features dual 60-inch ranges, a custom-fabricated walk-in refrigerator, and a 14-foot single-slab Taj Mahal quartzite island.",
+    description: "A high-end kitchen renovation with professional-grade appliances.",
     duration: "9 Months",
     sqft: "1,200 (Kitchen Suite)",
     role: "Interior Design & Custom Millwork",
