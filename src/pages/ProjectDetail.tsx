@@ -233,7 +233,7 @@ return <Layout>
 
               <h3 className="text-xl font-serif mb-10 text-primary border-b border-white/10 pb-6 uppercase tracking-widest">Specifications</h3>
 
-              <div className="space-y-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
                 {project.duration && (
                   <div className="flex items-start gap-6 group">
                     <div className="w-10 h-10 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">

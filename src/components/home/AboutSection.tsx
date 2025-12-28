@@ -39,8 +39,9 @@ const AboutSection = () => {
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -20 : -50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 20 : 50]);
 
   return <section ref={containerRef} className="py-32 bg-cream relative overflow-hidden">
     {/* Decorative background element */}
