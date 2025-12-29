@@ -9,8 +9,10 @@ import { SmelekLetterCard } from "@/components/gallery/SmelekLetterCard";
 import { Settings2 } from "lucide-react";
 import { useGalleryOrder } from "@/hooks/useGalleryOrder";
 import CTASection from "@/components/home/CTASection";
+import { motion, AnimatePresence } from "framer-motion";
 
 const DesignDetail = () => {
+    const { id } = useParams<{ id: string }>();
     const album = designAlbums.find((a) => a.id === id);
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
