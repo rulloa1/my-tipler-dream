@@ -11,6 +11,7 @@ import marbleBathImg from "@/assets/detail-marble-bath.jpg";
 import proRangeImg from "@/assets/detail-pro-range.jpg";
 import limestoneFireplaceImg from "@/assets/detail-limestone-fireplace.jpg";
 import leatherCabinetryImg from "@/assets/detail-leather-cabinetry.jpg";
+import { designAlbums } from "@/data/design-albums";
 
 const Design = () => {
   const navigate = useNavigate();
@@ -153,15 +154,67 @@ const Design = () => {
         </div>
       </section>
 
-      {/* 02 CAPABILITIES */}
+      {/* 02 DESIGN COLLECTIONS */}
       <section className="py-24 bg-cream relative overflow-hidden">
-        <div className="absolute right-0 top-1/2 text-[20rem] font-serif text-charcoal/5 -translate-y-1/2 translate-x-1/4 select-none pointer-events-none">
+        <div className="absolute right-0 top-0 text-[15rem] font-serif text-charcoal/5 -translate-y-1/4 translate-x-1/4 select-none pointer-events-none">
           02
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="text-gold text-xs tracking-[0.2em] uppercase block mb-4">02 Collections</span>
+              <h2 className="text-4xl font-serif font-light text-foreground">Design Albums</h2>
+            </div>
+            <p className="text-muted-foreground text-sm max-w-md font-light">
+              Explore our curated collections of luxury environments and specialty finishes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {designAlbums.map((album, i) => (
+              <motion.div
+                key={album.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group cursor-pointer"
+                onClick={() => navigate(`/design/${album.id}`)}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden mb-6">
+                  <img
+                    src={album.coverImage}
+                    alt={album.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="text-cream text-[10px] tracking-[0.3em] uppercase border border-cream/30 px-6 py-3 backdrop-blur-sm">
+                      View Collection
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-serif text-charcoal mb-2 group-hover:text-gold transition-colors">
+                  {album.title}
+                </h3>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-light">
+                  {album.images.length} Images
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 03 CAPABILITIES */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute left-0 top-1/2 text-[20rem] font-serif text-charcoal/5 -translate-y-1/2 -translate-x-1/4 select-none pointer-events-none">
+          03
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="mb-20">
-            <span className="text-gold text-xs tracking-[0.2em] uppercase block mb-4">02 Capabilities</span>
+            <span className="text-gold text-xs tracking-[0.2em] uppercase block mb-4">03 Capabilities</span>
             <h2 className="text-4xl font-serif font-light text-foreground">Skills & Services</h2>
           </div>
 
@@ -202,10 +255,10 @@ const Design = () => {
         </div>
       </section>
 
-      {/* 03 PHILOSOPHY */}
+      {/* 04 PHILOSOPHY */}
       <section className="py-32 bg-foreground text-cream relative">
         <div className="absolute left-12 top-12 text-[10rem] font-serif text-cream/5 select-none font-light">
-          03
+          04
         </div>
 
         <div className="container mx-auto px-6 lg:px-24 relative z-10 flex flex-col md:flex-row items-center gap-16">
@@ -224,10 +277,10 @@ const Design = () => {
         </div>
       </section>
 
-      {/* 04 PROCESS */}
+      {/* 05 PROCESS */}
       <section className="py-24 bg-background border-t border-border">
         <div className="container mx-auto px-6 lg:px-12">
-          <span className="text-gold text-xs tracking-[0.2em] uppercase block mb-12">04 Our Approach</span>
+          <span className="text-gold text-xs tracking-[0.2em] uppercase block mb-12">05 Our Approach</span>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { step: "01", title: "Discovery", desc: "Understanding vision, site conditions, and project requirements." },

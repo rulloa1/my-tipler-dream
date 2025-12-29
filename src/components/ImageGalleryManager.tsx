@@ -8,15 +8,92 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { categories } from "@/data/projects";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { z } from "zod";
+
+// URL validation schema - only allow http/https URLs that look like images
+const imageUrlSchema = z.string()
+  .trim()
+  .url({ message: "Invalid URL format" })
+  .refine((url) => {
+    try {
+      const parsed = new URL(url);
+      // Only allow http and https protocols
+      if (!['http:', 'https:'].includes(parsed.protocol)) {
+        return false;
+      }
+      // Block javascript: and data: protocols
+      if (url.toLowerCase().startsWith('javascript:') || url.toLowerCase().startsWith('data:')) {
+        return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  }, { message: "URL must use http or https protocol" })
+  .refine((url) => {
+    // Check for common image extensions or known image hosting patterns
+    const imageExtensions = /\.(jpg|jpeg|png|gif|webp|svg|bmp|ico|avif|heic|heif)(\?.*)?$/i;
+    const imageHostingPatterns = [
+      /supabase\.co\/storage/i,
+      /cloudinary\.com/i,
+      /imgur\.com/i,
+      /unsplash\.com/i,
+      /pexels\.com/i,
+      /googleusercontent\.com/i,
+    ];
+    
+    // Allow if it has image extension OR is from known image hosting
+    const hasImageExtension = imageExtensions.test(url);
+    const isFromImageHost = imageHostingPatterns.some(pattern => pattern.test(url));
+    
+    return hasImageExtension || isFromImageHost;
+  }, { message: "URL must point to an image file (jpg, png, gif, webp, etc.)" });
+
+const validateImageUrl = (url: string): { valid: boolean; error?: string } => {
+  const result = imageUrlSchema.safeParse(url);
+  if (result.success) {
+    return { valid: true };
+  }
+  return { valid: false, error: result.error.errors[0]?.message || "Invalid URL" };
+};
 
 const ImageGalleryManager = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>(categories[0]);
   const { projects, loading } = useProjectsByCategory(selectedCategory);
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [authChecked, setAuthChecked] = useState<boolean>(false);
 
   const activeProject = projects.find(p => p.id === selectedProject);
 
   const [localImages, setLocalImages] = useState<ProjectImage[]>([]);
+
+  // Check admin status on mount
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        setIsAdmin(false);
+        setAuthChecked(true);
+        return;
+      }
+
+      // Check if user has admin role
+      const { data: adminCheck } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .eq('role', 'admin')
+        .maybeSingle();
+
+      setIsAdmin(!!adminCheck);
+      setAuthChecked(true);
+    };
+
+    checkAdminStatus();
+  }, []);
 
   useEffect(() => {
     if (activeProject?.images) {
@@ -27,7 +104,7 @@ const ImageGalleryManager = () => {
         title: activeProject.title,
         description: null,
         display_order: img.display_order,
-        is_before: false, // Default
+        is_before: false,
         is_after: false
       }));
       setLocalImages(mappedImages);
@@ -36,18 +113,55 @@ const ImageGalleryManager = () => {
 
   const [uploading, setUploading] = useState(false);
 
-  // ... (existing code)
+  // Helper to verify admin before operations
+  const verifyAdmin = (): boolean => {
+    if (!isAdmin) {
+      toast.error("Admin access required for this operation");
+      return false;
+    }
+    return true;
+  };
 
   const handleUpload = async (file: File) => {
     if (!selectedProject) return;
+    if (!verifyAdmin()) return;
+    
     setUploading(true);
-    toast.info("Upload logic to be implemented with Supabase Storage");
-    // Implementation placeholder
-    setTimeout(() => setUploading(false), 1000);
+
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${selectedProject}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('project-gallery')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('project-gallery')
+        .getPublicUrl(fileName);
+
+      await handleUrlAdd(publicUrl, file.name);
+    } catch (error) {
+      console.error("Upload failed:", error);
+      toast.error("Failed to upload image");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleUrlAdd = async (url: string, title: string) => {
     if (!selectedProject) return;
+    if (!verifyAdmin()) return;
+    
+    // Validate URL before processing
+    const validation = validateImageUrl(url);
+    if (!validation.valid) {
+      toast.error(validation.error || "Invalid image URL");
+      return;
+    }
+    
     setUploading(true);
 
     const newOrder = localImages.length;
@@ -67,8 +181,9 @@ const ImageGalleryManager = () => {
       toast.success("Image added successfully");
       // Update local state
       if (activeProject && data) {
+        const typedData = data as unknown as { id: string };
         const newImage: ProjectImage = {
-          id: data.id,
+          id: typedData.id,
           project_id: selectedProject,
           image_url: url,
           title: activeProject.title,
@@ -84,10 +199,24 @@ const ImageGalleryManager = () => {
   };
 
   const handleDelete = async (image: ProjectImage) => {
-    toast.info("Delete logic to be implemented");
+    if (!verifyAdmin()) return;
+    if (!confirm("Are you sure you want to delete this image?")) return;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from('project_images' as any).delete().eq('id', image.id);
+
+    if (error) {
+      console.error("Error deleting image:", error);
+      toast.error("Failed to delete image");
+    } else {
+      toast.success("Image deleted");
+      setLocalImages(localImages.filter(img => img.id !== image.id));
+    }
   };
 
   const handleReorder = async (newOrder: ProjectImage[]) => {
+    if (!verifyAdmin()) return;
+    
     // Optimistic update
     setLocalImages(newOrder);
 
@@ -129,16 +258,69 @@ const ImageGalleryManager = () => {
     }
   };
 
-  const handleToggle = (image: ProjectImage, field: 'is_before' | 'is_after') => {
-    // Toggle logic
-    console.log("Toggling", image.id, field);
+  const handleToggle = async (image: ProjectImage, field: 'is_before' | 'is_after') => {
+    if (!verifyAdmin()) return;
+    
+    const newValue = !image[field];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from('project_images' as any)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .update({ [field]: newValue } as any)
+      .eq('id', image.id);
+
+    if (error) {
+      console.error(`Error toggling ${field}:`, error);
+      toast.error(`Failed to update ${field} status`);
+    } else {
+      setLocalImages(localImages.map(img =>
+        img.id === image.id ? { ...img, [field]: newValue } : img
+      ));
+      toast.success(`${field === 'is_before' ? 'Before' : 'After'} status updated`);
+    }
   };
+
+  // Show loading while checking auth
+  if (!authChecked) {
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <p className="text-muted-foreground">Checking permissions...</p>
+      </div>
+    );
+  }
+
+  // Show access denied if not admin
+  if (!isAdmin) {
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <h1 className="text-3xl font-serif text-destructive mb-4">Access Denied</h1>
+        <p className="text-muted-foreground">You need admin privileges to access the Gallery Manager.</p>
+        <Button
+          variant="outline"
+          className="mt-4"
+          onClick={async () => {
+            await supabase.auth.signOut();
+          }}
+        >
+          Sign Out
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto py-8 space-y-8">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-serif">Gallery Manager</h1>
         <div className="flex gap-4">
+          <Button
+            variant="outline"
+            onClick={async () => {
+              await supabase.auth.signOut();
+            }}
+          >
+            Sign Out
+          </Button>
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Category" />
