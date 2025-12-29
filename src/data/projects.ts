@@ -1,3 +1,5 @@
+import { designAlbums } from "./design-albums";
+
 export const categories = [
   "All",
   "Residential",
@@ -30,79 +32,43 @@ export interface ProjectData {
   };
 }
 
-export const projects: ProjectData[] = [
-  {
-    id: "pool-design-1",
-    title: "Luxury Infinity Pool",
-    category: "Pools",
-    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
-    location: "Austin, TX",
-    description: "A stunning infinity edge pool with custom stone work.",
+// Helper to map album ID to category
+const getCategory = (id: string): string => {
+  if (id.includes('pool') || id.includes('exterior')) return 'Pools';
+  if (id.includes('kitchen') || id.includes('interior') || id.includes('furniture') || id.includes('lighting') || id.includes('finishes')) return 'Interior';
+  if (id.includes('renderings')) return 'Commercial'; // or Residential
+  return 'Residential';
+};
+
+// Map design albums to projects
+export const projects: ProjectData[] = designAlbums.map(album => ({
+  id: album.id,
+  title: album.title,
+  category: getCategory(album.id),
+  coverImage: album.coverImage,
+  location: "Spring, TX", // Default based on Smelek letter
+  description: album.description,
+  gallery: album.images,
+  role: "Lead Designer & Builder", // Default role
+  // Add specific data for the main Pools project to preserve Process View functionality if needed
+  ...(album.id === 'pools' ? {
+    location: "Spring, TX",
+    role: "Master Builder & Lead Technical Designer",
     duration: "14 Months",
     gallons: "35,000",
-    role: "Master Builder & Lead Technical Designer",
-    gallery: [
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-6.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-1.webp"
-    ],
     processView: {
-      beforeImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
+      beforeImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp", // Keeping these as placeholders until local before/afters are identified
       afterImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-1.webp",
       beforeLabel: "Structural Concept",
       afterLabel: "Final Build"
     }
-  },
-  {
-    id: "modern-residential-1",
-    title: "Modern Hill Country",
-    category: "Residential",
-    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-10.webp",
-    location: "West Lake Hills, TX",
-    description: "Contemporary residential design blending with nature.",
-    duration: "24 Months",
-    sqft: "6,500",
-    bedrooms: 5,
-    baths: 6.5,
-    role: "General Contractor & Interior Architect",
-    gallery: [
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-10.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-11.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-12.webp"
-    ]
-  },
-  {
-    id: "commercial-spa-1",
-    title: "Resort Wellness Center",
-    category: "Hospitality",
-    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-15.webp",
-    location: "San Antonio, TX",
-    description: "A luxury spa and wellness environment for a world-class resort.",
-    duration: "18 Months",
-    sqft: "12,000",
-    role: "Design-Build Consultant",
-    gallery: [
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-15.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-16.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-17.webp"
-    ]
-  },
-  {
-    id: "modern-kitchen-1",
-    title: "Chef's Dream Kitchen",
-    category: "Interior",
-    coverImage: "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-20.webp",
-    location: "Dallas, TX",
-    description: "A high-end kitchen renovation with professional-grade appliances.",
-    duration: "9 Months",
-    sqft: "1,200 (Kitchen Suite)",
-    role: "Interior Design & Custom Millwork",
-    gallery: [
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-20.webp",
-      "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-21.webp",
-      "special://smelek-letter"
-    ]
-  }
-];
+  } : {}),
+  ...(album.id === 'southcoast-kitchen' ? {
+    location: "The Woodlands, TX",
+    duration: "6 Months",
+    sqft: "800",
+    role: "Interior Designer"
+  } : {})
+}));
 
 export const getProjectById = (id: string) => projects.find(p => p.id === id);
