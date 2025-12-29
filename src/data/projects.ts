@@ -1,7 +1,7 @@
 [
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/53a433ea-59d6-4e14-bf0c-fdc98161de95",
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/92d67a73-04f9-4845-9fdf-caa1a301de1d",
-  "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/69597742-403c-4c65-94da-c9099f00c294",
+  // "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/53a433ea-59d6-4e14-bf0c-fdc98161de95",
+  // "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/92d67a73-04f9-4845-9fdf-caa1a301de1d",
+  // "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/69597742-403c-4c65-94da-c9099f00c294",
   "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-5.webp",
   "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-6.webp",
   "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-7.webp",
