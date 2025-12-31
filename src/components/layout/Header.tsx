@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mcLogo from "@/assets/mc-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,6 +24,7 @@ const Header = () => {
     { name: "Design", path: "/design" },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
+    { name: "Chat with AI", path: "https://t.me/royAIsolutionsBot", external: true, icon: MessageCircle },
   ];
 
   return (
@@ -48,22 +49,36 @@ const Header = () => {
         {/* Desktop Navigation - Refined & Minimal */}
         <nav className="hidden lg:flex items-center gap-12">
           {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={cn(
-                "text-cream/70 hover:text-cream transition-colors duration-300 text-[11px] tracking-[0.2em] uppercase font-light relative group",
-                location.pathname === link.path && "text-cream"
-              )}
-            >
-              {link.name}
-              <span
+            link.external ? (
+              <a
+                key={link.path}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cream/70 hover:text-cream transition-colors duration-300 text-[11px] tracking-[0.2em] uppercase font-light relative group flex items-center gap-2"
+              >
+                {link.name}
+                {link.icon && <link.icon className="w-4 h-4" />}
+                <span className="absolute -bottom-1 left-0 h-[1px] bg-gold transition-all duration-500 w-0 group-hover:w-full" />
+              </a>
+            ) : (
+              <Link
+                key={link.path}
+                to={link.path}
                 className={cn(
-                  "absolute -bottom-1 left-0 h-[1px] bg-gold transition-all duration-500",
-                  location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
+                  "text-cream/70 hover:text-cream transition-colors duration-300 text-[11px] tracking-[0.2em] uppercase font-light relative group",
+                  location.pathname === link.path && "text-cream"
                 )}
-              />
-            </Link>
+              >
+                {link.name}
+                <span
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-[1px] bg-gold transition-all duration-500",
+                    location.pathname === link.path ? "w-full" : "w-0 group-hover:w-full"
+                  )}
+                />
+              </Link>
+            )
           ))}
         </nav>
 
@@ -104,16 +119,29 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + idx * 0.1 }}
                 >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={cn(
-                      "text-4xl font-serif tracking-tight transition-colors",
-                      location.pathname === link.path ? "text-primary italic" : "text-cream hover:text-primary"
-                    )}
-                  >
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-4xl font-serif tracking-tight transition-colors text-cream hover:text-primary flex items-center gap-3"
+                    >
+                      {link.name}
+                      {link.icon && <link.icon className="w-6 h-6" />}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        "text-4xl font-serif tracking-tight transition-colors",
+                        location.pathname === link.path ? "text-primary italic" : "text-cream hover:text-primary"
+                      )}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>
@@ -121,7 +149,6 @@ const Header = () => {
             <div className="mt-auto space-y-6 pt-12 border-t border-white/5">
               <p className="text-[10px] tracking-widest text-primary uppercase font-bold">Inquiry</p>
               <a href="tel:+14352377373" className="block text-xl text-cream font-light">(435) 237-7373</a>
-              <a href="mailto:Mike.rcccon@yahoo.com" className="block text-xl text-cream font-light">Mike.rcccon@yahoo.com</a>
             </div>
           </motion.div>
         )}

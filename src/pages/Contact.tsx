@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,30 +45,6 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      label: "Phone (Preferred)",
-      value: "(435) 237-7373",
-      href: "tel:+14352377373",
-      detail: "Mon - Fri, 8am - 6pm"
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      value: "Mike.rcccon@yahoo.com",
-      href: "mailto:Mike.rcccon@yahoo.com",
-      detail: "Direct correspondence"
-    },
-    {
-      icon: MapPin,
-      label: "Address",
-      value: "8215 Winding Hill Ln",
-      href: "#",
-      detail: "Spring, TX 77379"
-    }
-  ];
-
   return (
     <Layout>
       <div className="min-h-screen bg-cream">
@@ -112,27 +87,6 @@ const Contact = () => {
                   <p className="text-cream/60 mb-12 font-light leading-relaxed">
                     Whether you're planning a custom residence or seeking development expertise, I'm here to translate your vision into reality.
                   </p>
-
-                  <div className="space-y-10">
-                    {contactInfo.map((item, idx) => (
-                      <div key={idx} className="flex gap-6 group">
-                        <div className="w-12 h-12 bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                          <item.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-1">{item.label}</p>
-                          <a
-                            href={item.href}
-                            className="text-lg hover:text-primary transition-colors flex items-center gap-2"
-                          >
-                            {item.value}
-                            {item.href !== "#" && <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" />}
-                          </a>
-                          <p className="text-xs text-cream/30 mt-1">{item.detail}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="p-8 border border-gold/10 bg-white/50 backdrop-blur-sm">
@@ -141,6 +95,10 @@ const Contact = () => {
                     Currently accepting select projects for Q2-Q3 2026. Reach out to schedule an initial site evaluation.
                   </p>
                 </div>
+                
+                <p className="text-[10px] text-muted-foreground mt-4 opacity-50 text-center lg:text-left">
+                  An affiliate of royscompany.com
+                </p>
               </motion.div>
 
               {/* Form Column */}
