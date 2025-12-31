@@ -271,12 +271,12 @@ export const projects: Project[] = [
     coverImage: "/projects/Ultra Luxe Private Pool/hospitality-pool-cover-v2.jpg",
     gallery: [
       "/projects/Ultra Luxe Private Pool/hospitality-pool-cover-v2.jpg",
-      "/projects/Ultra Luxe Private Pool/001.jpg",
-      "/projects/Ultra Luxe Private Pool/004.JPG",
-      "/projects/Ultra Luxe Private Pool/005.JPG",
-      "/projects/Ultra Luxe Private Pool/006.JPG",
-      "/projects/Ultra Luxe Private Pool/007.JPG",
-      "/projects/Ultra Luxe Private Pool/009.jpg",
+      "/projects/Ultra Luxe Private Pool/001.JPG",
+      "/projects/Ultra Luxe Private Pool/004.png",
+      "/projects/Ultra Luxe Private Pool/005.webp",
+      "/projects/Ultra Luxe Private Pool/006.png",
+      "/projects/Ultra Luxe Private Pool/007.png",
+      "/projects/Ultra Luxe Private Pool/009.png",
       "/projects/Ultra Luxe Private Pool/010.jpg",
       "/projects/Ultra Luxe Private Pool/011.jpg",
       "/projects/Ultra Luxe Private Pool/012.JPG",
@@ -304,10 +304,8 @@ export const projects: Project[] = [
       "/projects/Ultra Luxe Private Pool/034.jpg",
       "/projects/Ultra Luxe Private Pool/035.jpg",
       "/projects/Ultra Luxe Private Pool/036.jpg",
-      "/projects/Ultra Luxe Private Pool/0010.JPG",
       "/projects/Ultra Luxe Private Pool/0011.JPEG",
-      "/projects/Ultra Luxe Private Pool/002.JPEG",
-      "/projects/Ultra Luxe Private Pool/003.JPEG"
+      "/projects/Ultra Luxe Private Pool/002.png"
     ],
     poolSize: "189,000 gallons",
     projectArea: "3 Acres",
@@ -777,7 +775,7 @@ export const projects: Project[] = [
     role: "Restoration Specialist"
   },
   {
-    id: "laguna-grande",
+    id: "laguna-grande-design-build",
     title: "Laguna Grande Design Build",
     category: "Design Build",
     location: "Laguna Grande",
