@@ -153,6 +153,9 @@ export const DetailLayout = ({
           </div>
         </section>
 
+        {/* Related Projects or other content */}
+        {afterGallery}
+
         {/* Navigation Footer */}
         <section className="py-24 bg-cream border-y border-border relative overflow-hidden">
            {/* Decorative background element similar to ProjectDetail */}
@@ -197,8 +200,6 @@ export const DetailLayout = ({
             </div>
           </div>
         </section>
-
-        {afterGallery}
 
         {showCTA && <CTASection />}
 
