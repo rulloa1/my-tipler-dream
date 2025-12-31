@@ -1,4 +1,18 @@
-export const projects = [
+// Placeholder categories based on usage
+export const categories = [
+  "All",
+  "Residential",
+  "Commercial",
+  "Hospitality",
+  "Renovation",
+  "Land Development"
+];
+
+// Reconstructed project data based on the URLs found in the previous file state
+// Since we don't have the original metadata, we are assigning placeholder values.
+// In a real scenario, this data would need to be restored from a backup or source of truth.
+
+const projectImages = [
   "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/53a433ea-59d6-4e14-bf0c-fdc98161de95",
   "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/92d67a73-04f9-4845-9fdf-caa1a301de1d",
   "blob:https://id-preview--484d8772-8d1b-470c-abf3-e9e1b299cae2.lovable.app/69597742-403c-4c65-94da-c9099f00c294",
@@ -36,3 +50,15 @@ export const projects = [
   "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-36.webp",
   "https://raw.githubusercontent.com/rulloa1/constructiondesignnew-e33525f5/main/src/assets/projects/pool-design-37.webp",
 ];
+
+export const projects = projectImages.map((img, index) => ({
+  id: index + 1,
+  coverImage: img,
+  title: `Project ${index + 1}`,
+  category: categories[1 + (index % (categories.length - 1))], // Rotate through categories except "All"
+  location: "California, USA"
+}));
+
+export const getProjectById = (id: string | number) => {
+  return projects.find((project) => project.id == id);
+};
