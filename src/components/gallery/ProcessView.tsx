@@ -79,7 +79,7 @@ export const ProcessView = ({
         <div
             ref={containerRef}
             className={cn(
-                "relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden select-none cursor-col-resize touch-none rounded-sm shadow-2xl bg-charcoal group focus:outline-none focus:ring-2 focus:ring-gold/50",
+                "relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden select-none cursor-col-resize touch-none rounded-lg shadow-2xl bg-charcoal group focus:outline-none focus:ring-2 focus:ring-gold/50 border border-white/10",
                 className
             )}
             onMouseMove={onMouseMove}
@@ -122,7 +122,7 @@ export const ProcessView = ({
                     style={{ width: containerWidth || "100%" }} 
                     draggable={false}
                 />
-                <div className="absolute top-6 left-6 bg-gold/90 backdrop-blur-sm px-4 py-2 border border-white/10 rounded-sm z-10">
+                <div className="absolute top-6 left-6 bg-gold/90 backdrop-blur-md px-5 py-2 border border-white/10 rounded-full z-10 shadow-lg">
                     <span className="text-xs tracking-[0.2em] font-bold text-charcoal uppercase">{beforeLabel}</span>
                 </div>
 
@@ -135,8 +135,8 @@ export const ProcessView = ({
                 className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize z-20 flex items-center justify-center group"
                 style={{ left: `${sliderPosition}%` }}
             >
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-charcoal/20 transition-transform group-hover:scale-110">
-                    <GripVertical className="w-5 h-5 text-charcoal opacity-50" />
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.3)] border-4 border-gold transition-transform group-hover:scale-110">
+                    <GripVertical className="w-5 h-5 text-gold" />
                 </div>
                 <div className="absolute top-0 bottom-0 w-8 bg-white/0 group-hover:bg-white/10 transition-colors -translate-x-1/2 left-1/2" />
             </div>

@@ -154,7 +154,9 @@ export const DetailLayout = ({
         </section>
 
         {/* Related Projects or other content */}
-        {afterGallery}
+{afterGallery && <div className="after-gallery">{afterGallery}</div>}
+
+
 
         {/* Navigation Footer */}
         <section className="py-24 bg-cream border-y border-border relative overflow-hidden">

@@ -313,7 +313,7 @@ const ProjectDetail = () => {
                     </div>
                   </div>
 
-                  <div className="mt-8 p-8 border border-gold/10 bg-white/50 backdrop-blur-sm">
+                  <div className="mt-8 p-8 border border-gold/30 bg-white/50 backdrop-blur-sm shadow-lg">
                     <p className="text-[10px] tracking-widest uppercase text-gold font-bold mb-4">Inquiry</p>
                     <p className="text-sm text-muted-foreground leading-relaxed italic mb-6">
                       Interested in a similar development or custom build?
