@@ -45,7 +45,7 @@ const Portfolio = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/60 to-charcoal z-10" />
           <img
-            src="/design/exterior/cover.png"
+            src="/design/exterior/cover.jpg"
             alt="Portfolio Cover"
             className="w-full h-full object-cover opacity-60"
           />

@@ -185,7 +185,7 @@ function SortableImage({
             src={`https://img.youtube.com/vi/${image.split('v=')[1]?.split('&')[0]}/0.jpg`}
             alt="Video Thumbnail"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = "/og-image.png";
+              (e.target as HTMLImageElement).src = "/og-image.jpg";
               (e.target as HTMLImageElement).className = "w-full h-full object-cover opacity-20 grayscale";
             }}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
