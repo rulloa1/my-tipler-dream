@@ -78,8 +78,8 @@ export const designAlbums: DesignAlbum[] = [
             "/design/lighting/IMG_5552.jpg",
             "/design/lighting/IMG_8238.jpg",
             "/design/lighting/IMG_8243.jpg",
-            "/design/lighting/IMG_4621.PNG",
-            "/design/lighting/IMG_3154.PNG",
+            "/design/lighting/IMG_4621.jpg",
+            "/design/lighting/IMG_3154.jpg",
             "/design/lighting/168093.jpeg",
             "/design/lighting/168095.jpeg",
             "/design/lighting/168096.jpeg"
@@ -109,5 +109,33 @@ export const designAlbums: DesignAlbum[] = [
             "/design/finishes/IMG_4430.jpg"
         ]
     },
+    {
+        id: "architectural-renderings",
+        title: "Architectural Renderings",
+        description: "High-fidelity visualizations of conceptual designs and future projects.",
+        coverImage: "/design/renderings/cover.png",
+        images: ["/design/renderings/1.png", "/design/renderings/2.png"]
+    },
+    {
+        id: "custom-furniture",
+        title: "Custom Furniture",
+        description: "Bespoke furniture pieces designed and crafted for specific spaces.",
+        coverImage: "/design/furniture/cover.png",
+        images: ["/design/furniture/1.png", "/design/furniture/2.png"]
+    },
+    {
+        id: "exterior-spaces",
+        title: "Exterior Spaces & Landscape",
+        description: "Outdoor living environments, landscapes, and hardscapes.",
+        coverImage: "/design/exterior/cover.jpg",
+        images: ["/design/exterior/1.jpg", "/design/exterior/2.jpg"]
+    },
+    {
+        id: "interiors",
+        title: "Interiors",
+        description: "Elegant residential interiors showcasing timeless design and craftsmanship.",
+        coverImage: "/design/interiors/cover.png",
+        images: ["/design/interiors/1.png", "/design/interiors/2.png"]
+    }
     // Future albums can be added here
 ];
