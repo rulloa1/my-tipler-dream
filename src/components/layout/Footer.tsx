@@ -1,18 +1,10 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Facebook, Instagram, Linkedin, ArrowUpRight, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import mcLogo from "@/assets/mc-logo.png";
-import roysLogo from "@/assets/royscompany-logo.png";
 import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { icon: Facebook, href: "#" },
-    { icon: Instagram, href: "#" },
-    { icon: Linkedin, href: "#" },
-    { icon: Send, href: "https://t.me/royAIsolutionsBot" }
-  ];
 
   return (
     <footer className="bg-charcoal text-cream pt-24 pb-12 relative overflow-hidden">
@@ -37,15 +29,9 @@ const Footer = () => {
               Crafting legacy environments through 37 years of <span className="text-primary italic">uncompromising</span> design and master building.
             </p>
             <div className="flex gap-5">
-              {socialLinks.map((item, idx) => (
-                <a 
-                  key={idx} 
-                  href={item.href} 
-                  target={item.icon === Send ? "_blank" : "_self"}
-                  rel={item.icon === Send ? "noopener noreferrer" : ""}
-                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-charcoal transition-all duration-500"
-                >
-                  <item.icon className="w-5 h-5" />
+              {[Facebook, Instagram, Linkedin].map((Icon, idx) => (
+                <a key={idx} href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-charcoal transition-all duration-500">
+                  <Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
@@ -76,6 +62,10 @@ const Footer = () => {
                   <p className="text-[10px] text-cream/30 uppercase tracking-widest mb-1">Direct Line</p>
                   <p className="text-sm group-hover:text-primary transition-colors">(435) 237-7373</p>
                 </a>
+                <a href="mailto:Mike.rcccon@yahoo.com" className="block group">
+                  <p className="text-[10px] text-cream/30 uppercase tracking-widest mb-1">Email</p>
+                  <p className="text-sm group-hover:text-primary transition-colors">Mike.rcccon@yahoo.com</p>
+                </a>
               </div>
             </div>
 
@@ -102,18 +92,9 @@ const Footer = () => {
             <Link to="/privacy" className="text-[10px] tracking-widest uppercase text-cream/30 hover:text-cream transition-colors">Privacy</Link>
             <Link to="/terms" className="text-[10px] tracking-widest uppercase text-cream/30 hover:text-cream transition-colors">Terms</Link>
           </div>
-          
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <p className="text-[10px] tracking-[0.2em] uppercase text-cream/30">
-              © {currentYear} Michael Chandler Design <span className="mx-2">|</span> Built for Legacy
-            </p>
-            <div className="flex items-center gap-2 text-[10px] text-cream/30">
-              <span>RoyalSolutions.me is a proud affiliate of</span>
-              <a href="https://royscompany.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                <img src={roysLogo} alt="RoysCompany" className="h-4 w-auto" />
-              </a>
-            </div>
-          </div>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-cream/30">
+            © {currentYear} Michael Chandler Design <span className="mx-2">|</span> Built for Legacy
+          </p>
         </div>
       </div>
     </footer>

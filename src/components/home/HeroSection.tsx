@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, ChevronLeft, ChevronRight, ArrowRight, MessageCircle } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PremiumButton } from "@/components/ui/PremiumButton";
-import roysLogo from "@/assets/royscompany-logo.png";
 
 const heroImages = [
   "/projects/S. Florida High Rise Luxe/Miami001 COVER.jpg",
@@ -52,7 +51,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="max-w-5xl flex flex-col items-center"
+          className="max-w-5xl"
         >
           <p className="text-primary tracking-[0.5em] uppercase text-xs mb-6 font-semibold">Master Builder & Designer</p>
 
@@ -64,7 +63,7 @@ const HeroSection = () => {
           <div className="w-24 h-[1px] bg-gold mx-auto mb-12 opacity-50" />
 
           {/* Refined Stats Container */}
-          <div className="grid grid-cols-2 gap-12 md:gap-32 mb-12 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 gap-12 md:gap-32 mb-16 max-w-2xl mx-auto">
             <div className="text-center group">
               <span className="block text-5xl md:text-7xl font-light text-primary leading-none mb-3 group-hover:scale-110 transition-transform duration-500">
                 19
@@ -83,18 +82,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Partner Badge */}
-          <motion.a
-            href="https://royscompany.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-12 hover:bg-white/10 transition-colors"
-            whileHover={{ scale: 1.05 }}
-          >
-            <span className="text-[10px] tracking-widest text-cream/60 uppercase">Partner of</span>
-            <img src={roysLogo} alt="RoysCompany" className="h-5 w-auto opacity-80" />
-          </motion.a>
-
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link to="/portfolio">
               <PremiumButton size="lg" className="bg-primary text-charcoal hover:bg-gold-dark px-12 py-8 min-w-[240px]">
@@ -111,16 +98,6 @@ const HeroSection = () => {
                 <ArrowRight className="w-4 h-4 ml-3" />
               </PremiumButton>
             </Link>
-            <a href="https://t.me/royAIsolutionsBot" target="_blank" rel="noopener noreferrer">
-              <PremiumButton
-                size="lg"
-                variant="outline"
-                className="border-cream/20 bg-white/5 backdrop-blur-md text-cream hover:bg-cream hover:text-charcoal px-12 py-8 min-w-[240px]"
-              >
-                Chat with AI
-                <MessageCircle className="w-4 h-4 ml-3" />
-              </PremiumButton>
-            </a>
           </div>
         </motion.div>
       </div>
