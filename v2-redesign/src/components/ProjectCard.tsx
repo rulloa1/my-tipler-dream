@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Project } from '../data/projects'
 
 interface ProjectCardProps {
@@ -41,9 +42,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <div className="text-sm uppercase tracking-widest text-concrete-400">
                         {project.location}
                     </div>
-                    <button className="text-sm uppercase tracking-widest font-bold border-b border-concrete-900 pb-1 hover:text-concrete-400 hover:border-concrete-400 transition-colors">
+                    <Link
+                        to={`/project/${project.id}`}
+                        className="text-sm uppercase tracking-widest font-bold border-b border-concrete-900 pb-1 hover:text-concrete-400 hover:border-concrete-400 transition-colors"
+                    >
                         View Project
-                    </button>
+                    </Link>
                 </div>
             </div>
         </motion.div>

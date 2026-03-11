@@ -18,7 +18,7 @@ export const projects: Project[] = [
         location: "Various Locations",
         description: album.description,
         coverImage: album.coverImage,
-        gallery: album.images,
+        gallery: album.images.filter(img => !img.startsWith('special://')),
     }))
 ];
 
