@@ -1,62 +1,60 @@
-# My Tipler Dream - Luxury Real Estate & Design Portfolio
+# My Tipler Dream
 
-A premium, high-end portfolio website for luxury real estate development and interior design. This project showcases architectural vision, execution, and design evolution through an elegant and immersive user experience.
+A luxury interior design portfolio for Tipler Design — built with React, Vite, TypeScript, and Supabase.
 
 ## Features
 
-- **Luxury Portfolio**: Showcasing high-end real estate projects with detailed narratives and specifications.
-- **Design Showcase**: Interactive gallery and design evolution views.
-- **AI Redesign Integration**: Experimental AI-powered redesign dialogs for interior spaces.
-- **Premium UI/UX**: Built with a focus on luxury aesthetics using custom animations and a refined color palette.
-- **Responsive Design**: Fully optimized for all devices, from mobile to desktop.
-- **Supabase Integration**: Backend support for gallery management and authentication.
+- **Portfolio Gallery** — Curated design albums across categories: pools, kitchens, lighting, finishes, and more
+- **Project Detail Views** — Full-screen gallery lightboxes with smooth transitions
+- **Services Pages** — Detailed service offerings with visual storytelling
+- **Admin Panel** — Password-protected admin gallery for managing project images
+- **Authentication** — Magic link / email auth via Supabase
+- **Animations** — Framer Motion scroll and entrance animations throughout
+- **v2 Redesign** — An alternate brutalist/minimalist version in `v2-redesign/`
 
-## Technologies Used
+## Tech Stack
 
-- **Frontend**: React, Vite, TypeScript
-- **Styling**: Tailwind CSS, Framer Motion, shadcn/ui
-- **Backend**: Supabase
-- **Icons**: Lucide React
-- **Forms**: React Hook Form, Zod
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS + shadcn/ui
+- Supabase (database, auth, storage)
+- Framer Motion
+- OpenAI integration
 
 ## Getting Started
 
-### Prerequisites
+```bash
+npm install
+cp .env.example .env
+# Fill in your Supabase and OpenAI credentials in .env
+npm run dev
+```
 
-- Node.js (v18 or higher)
-- npm or pnpm
+## Environment Variables
 
-### Installation
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/rulloa1/my-tipler-dream.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd my-tipler-dream
-   ```
-3. Install dependencies:
-   ```sh
-   npm install
-   ```
-4. Start the development server:
-   ```sh
-   npm run dev
-   ```
+See `.env.example` for required variables:
+- `VITE_SUPABASE_URL` — Your Supabase project URL
+- `VITE_SUPABASE_ANON_KEY` — Your Supabase anon/public key
+- `VITE_OPENAI_API_KEY` — OpenAI API key (optional, for AI features)
 
 ## Project Structure
 
-- `src/components`: Reusable UI components and layout elements.
-- `src/pages`: Main application pages (Home, Portfolio, Project Detail, etc.).
-- `src/hooks`: Custom React hooks for shared logic.
-- `src/data`: Static data and project configurations.
-- `src/integrations`: External service integrations (Supabase).
+```
+src/
+├── pages/          # Route-level page components
+├── components/     # Shared UI components
+├── lib/            # Supabase client, utilities
+└── App.tsx         # Routes and layout
 
-## Deployment
+v2-redesign/        # Alternate brutalist redesign (standalone Vite app)
+```
 
-This project is optimized for deployment on platforms like Vercel, Netlify, or through the Lovable platform.
+## v2 Redesign
 
----
+The `v2-redesign/` folder contains a standalone brutalist/minimalist redesign called **Aethereal**. To run it separately:
 
-Built with passion for luxury design and development.
+```bash
+cd v2-redesign
+npm install
+npm run dev
+```

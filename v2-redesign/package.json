@@ -1,5 +1,5 @@
 {
-    "name": "v2-redesign",
+    "name": "tipler-dream-v2",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -12,6 +12,7 @@
     "dependencies": {
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-router-dom": "^6.26.2",
         "framer-motion": "^11.5.4",
         "lucide-react": "^0.441.0",
         "clsx": "^2.1.1",
