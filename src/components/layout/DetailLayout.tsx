@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Settings2 } from "lucide-react";
@@ -66,19 +66,19 @@ export const DetailLayout = ({
   }, [title]);
 
   const openLightbox = (index: number) => setSelectedImage(index);
-  const closeLightbox = () => setSelectedImage(null);
+  const closeLightbox = useCallback(() => setSelectedImage(null), []);
   
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (selectedImage !== null && selectedImage < galleryImages.length - 1) {
       setSelectedImage(selectedImage + 1);
     }
-  };
+  }, [selectedImage, galleryImages.length]);
   
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (selectedImage !== null && selectedImage > 0) {
       setSelectedImage(selectedImage - 1);
     }
-  };
+  }, [selectedImage]);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -91,7 +91,7 @@ export const DetailLayout = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage, galleryImages.length]);
+  }, [selectedImage, nextImage, prevImage, closeLightbox]);
 
   return (
     <Layout>

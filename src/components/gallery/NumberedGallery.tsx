@@ -255,7 +255,8 @@ export const NumberedGallery = ({
         url 
       })));
     }
-  }, [externalImages]); // We don't include items in dependency to avoid loop, logic relies on functional update or careful check
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [externalImages]); // `items` intentionally excluded from deps to prevent infinite re-render loop
 
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
