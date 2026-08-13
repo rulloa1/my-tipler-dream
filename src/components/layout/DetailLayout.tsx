@@ -31,8 +31,8 @@ interface DetailLayoutProps {
   
   // Navigation
   backLink: { to: string; label: string };
-  prevItem?: { id: string; title: string; coverImage: string; link: string } | null;
-  nextItem?: { id: string; title: string; coverImage: string; link: string } | null;
+  prevItem?: { id: string | number; title: string; coverImage: string; link: string } | null;
+  nextItem?: { id: string | number; title: string; coverImage: string; link: string } | null;
   
   // Optional
   showCTA?: boolean;

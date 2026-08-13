@@ -36,8 +36,8 @@ describe('ImageGrid', () => {
 
     it('renders correct number of cards', () => {
         render(<ImageGrid {...defaultProps} />);
-        // Check for the heading
-        expect(screen.getByText('Project Images (2)')).toBeInTheDocument();
+        // Check the user-visible heading, including its nested count badge.
+        expect(screen.getByRole('heading', { name: /project images/i })).toHaveTextContent('Project Images (2)');
         // Check for images
         const images = screen.getAllByRole('img');
         expect(images).toHaveLength(2);

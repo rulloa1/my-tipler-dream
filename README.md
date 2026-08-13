@@ -19,14 +19,14 @@ A luxury interior design portfolio for Tipler Design — built with React, Vite,
 - Tailwind CSS + shadcn/ui
 - Supabase (database, auth, storage)
 - Framer Motion
-- OpenAI integration
+- Supabase Edge Functions for server-side integrations
 
 ## Getting Started
 
 ```bash
 npm install
 cp .env.example .env
-# Fill in your Supabase and OpenAI credentials in .env
+# Fill in the Supabase browser configuration in .env
 npm run dev
 ```
 
@@ -34,8 +34,9 @@ npm run dev
 
 See `.env.example` for required variables:
 - `VITE_SUPABASE_URL` — Your Supabase project URL
-- `VITE_SUPABASE_ANON_KEY` — Your Supabase anon/public key
-- `VITE_OPENAI_API_KEY` — OpenAI API key (optional, for AI features)
+- `VITE_SUPABASE_PUBLISHABLE_KEY` — Your Supabase publishable browser key
+
+> Do not add OpenAI or other provider secret keys to `VITE_*` variables: Vite exposes those values to every browser. Configure any future AI-provider credentials only as server-side Supabase Edge Function secrets.
 
 ## Project Structure
 
